@@ -35,7 +35,7 @@ export default function Footer(props){
                 <a href="" className="contactus--icon"><i className="fa-brands fa-linkedin"></i></a>
                 <a href="" className="contactus--icon"><i className="fa-brands fa-whatsapp"></i></a>
             </div>
-            <div className="contactus--copyright">&#169; CopyRight.All rights reserver {currYear}</div>
+            <div className="contactus--copyright">&#169; CopyRight.All rights reserved {currYear}</div>
         </div>
     )
 }

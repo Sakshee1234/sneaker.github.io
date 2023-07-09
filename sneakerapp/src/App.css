@@ -11,10 +11,20 @@ nav{
   color:white;
   font-weight:bold;
   margin:auto;
-  font-size: larger;
+  font-size: 40px;
 }
 .nav--search-bar{
   margin:auto;
+}
+.nav--search-input{
+  height:40px;
+  width:300px;
+  border-radius: 5px;
+}
+.nav--search-icon{
+  height:46px;
+  width:40px;
+  border-radius: 5px;
 }
 .nav--limited-offer{
   color:white;
@@ -34,6 +44,13 @@ nav{
 }
 i{
   margin-right:5%;
+}
+
+.salescards{
+  display:flex;
+  flex-direction: row;
+  padding:2%;
+  margin:2%;
 }
 .card{
   width:200px;
@@ -65,12 +82,11 @@ i{
 .footer--firstline{
   display:flex;
   justify-content: space-around;
-  padding:2%;
+  padding:1%;
 }
 .footer--subscribe{
   display:flex;
   flex-direction: column;
-  padding:2%;
   justify-content: space-around;
 }
 .contactus{
@@ -88,8 +104,73 @@ i{
 .contactus--copyright{
   display: flex;
   justify-content: center;
+  padding-bottom: 2%;
 }
 
 .contact--link:hover{
   color:gray;
+}
+
+/* shopping cards */
+
+.shoppingcard{
+  position:relative;
+  width: 300px;
+  height: 300px;
+  margin:2%;
+  box-shadow: 0 5px 20px rgba(0,0,0,.3);
+  display:flex;
+  flex-direction:column;
+  padding: 20px 20px 40px;
+  border-radius:10px;
+  transition: .3s; 
+}
+.shoppingcard:hover{
+  transform : translateY(-15px);
+  box-shadow: 0 5px 10px rgba(0,0,0, .2);
+}
+.shoppingcard--image{
+  width:100%;
+  height:60%;
+}
+.shoppingcard--image img{
+  width:244px;
+}
+
+.shoppingcard--price{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shoppingcard--stars{
+  margin: 10px 2px;
+}
+
+.shoppingcard--buy{
+  position:absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.shoppingcard--buy button{
+  padding: 10px 20px;
+  border-radius: 7px;
+  border:none;
+  background-color: var(--textColor);
+  color: var(--sectionBack);
+  font-size: 18px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition:  .5s;
+}
+
+.shoppingcard--buy button:hover{
+  transform: scale(1.1);
+}
+
+.shoppingcard--wishlist{
+  color:white;
+  border:black;
+  outline-color: black;
 }

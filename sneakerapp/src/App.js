@@ -5,6 +5,7 @@ import Card from './components/Card.js';
 import Footer from './components/Footer';
 import Shoppingcard from './components/shoppingcard';
 import {shoppingcarddata} from './shoppingcardsdata.js';
+import img from "./img.png"
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -51,6 +52,7 @@ function App() {
       <div className="cardsthree">
         {cards}
       </div>
+      <img src={img} className="footimage"/>
       <hr/>
       <Footer/>
     </div>

@@ -25,14 +25,14 @@ export default function Shoppingcard(props){
                 </div>
 
                 <div className="shoppingcard--price">
-                    <h3>Shoes</h3>
+                    <h3>{props.data.title}</h3>
                     <span>
                         ₹{props.data.price}  
                             {props.data.originalprice && <sub><del>₹{props.data.originalprice}</del></sub>}
                     </span>
                 </div>
                 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias deserunt  </p>
+                <p>{props.data.description}</p>
                 <div className="shoppingcard--stars">
                     {1<=props.data.star?(<i className="fa fa-star fa " style={styleOrange}></i>):(<i className="fa fa-star fa "></i>)}
                     {2<=props.data.star?(<i className="fa fa-star fa " style={styleOrange}></i>):(<i className="fa fa-star fa "></i>)}

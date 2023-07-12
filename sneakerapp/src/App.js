@@ -4,8 +4,10 @@ import Navbar from './components/Navbar.js';
 import Card from './components/Card.js';
 import Footer from './components/Footer';
 import Shoppingcard from './components/shoppingcard';
-import {shoppingcarddata} from './shoppingcardsdata.js';
-import img from "./img.png"
+import {airforce} from './shoppingcardsdata.js';
+import img from "./images/img.png"
+import { Link} from "react-router-dom";
+import Checkout from './components/checkoutform';
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -32,30 +34,50 @@ function App() {
       />
     )
   })
-  console.log(shoppingcarddata);
-  const [shoppingcard,setShoppingcard]=React.useState(shoppingcarddata);
 
-  const shoppingcardels=shoppingcard.map(function(data){
+  const [shoppingcard,setShoppingcard]=React.useState(airforce);
+
+  const airforcels=shoppingcard.map(function(data){
     return(
       <Shoppingcard
         data={data}
+        toggleForm={toggleForm}
       />
     )
   })
   
+  const [displayForm,setDisplayForm]=React.useState(false);
+
+  function toggleForm(){
+    setDisplayForm(prevDisplayForm=>!prevDisplayForm)
+  }
+
+  const styleDisplayForm={
+    display: displayForm ? "block":"none"
+  }
   return (
-    <div className="App">
-      <Navbar/>
-      <div className="salescards">
-        {shoppingcardels}
+    <>
+      <div className="App">
+
+        <Navbar/>
+        <div className="salescards">
+          {airforcels}
+        </div>
+        <div className="cardsthree">
+          {cards}
+        </div>
+        <img src={img} className="footimage"/>
+        <hr/>
+        <Footer/>
+        
       </div>
-      <div className="cardsthree">
-        {cards}
+      <div className='checkoutform' style={styleDisplayForm}>
+          <Checkout
+            toggleForm={toggleForm}
+          />
       </div>
-      <img src={img} className="footimage"/>
-      <hr/>
-      <Footer/>
-    </div>
+
+    </>
   );
 }
 

@@ -12,6 +12,10 @@ export default function Navbar() {
                             <button className="btn btn-outline-secondary nav--search-icon" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </span>
                     </div>
+                    <div className="nav--cart">
+                        <i className="fa-duotone fa-shopping-cart fa nav--cart-icon"></i>
+                        <i className="fa-duotone fa-heart fa nav--wishlist"></i>
+                    </div>
                     {/* <div className="nav--limited-offer">Limited Offer</div> */}
                 </div>
                 <div className='nav--secondline'>

@@ -1,21 +1,35 @@
-
+.App{
+  position:absolute;
+}
+.checkoutform{
+  background-color: white;
+  position:absolute;
+  z-index:1;
+  margin-left:25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:1px black solid;
+  position:right center;
+}
 nav{
   background-color:black;
 }
 .nav--firstline{
   display:flex;
+  flex-wrap:wrap;
   padding-top: 1%;
-
+  justify-content: space-around;
 }
 .nav--title{
   color:white;
   font-weight:bold;
-  margin:auto;
   font-size: 40px;
+
 }
-.nav--search-bar{
-  margin:auto;
-}
+/* .nav--search-bar{
+
+} */
 .nav--search-input{
   height:40px;
   width:300px;
@@ -42,16 +56,38 @@ nav{
   padding:2% 2%;
   color:white;
 }
+.nav--categories:hover{
+  /* color:gray; */
+  text-decoration: underline;
+}
+.nav--cart{
+  display:flex;
+}
+.nav--cart-icon{
+  color:white;
+  font-size: 35px;
+  margin-right:50px;
+}
+.nav--wishlist{
+  color:white;
+  font-size: 35px;
+}
+.nav--wishlist:hover{
+  color:gray;
+}
+.nav--cart-icon:hover{
+  color:gray;
+}
 i{
   margin-right:5%;
 }
 
-.salescards{
+/* .salescards{
   display:flex;
   flex-direction: row;
   padding:2%;
   margin:2%;
-}
+} */
 .card{
   width:200px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -111,51 +147,74 @@ i{
   color:gray;
 }
 
-
 .footimage{
   width:100%;
   height:100%;
 }
 /* shopping cards */
-
+.salescards{
+  display:flex;
+  flex-wrap:wrap;
+  margin:auto;
+  justify-content: center;
+}
 .shoppingcard{
   position:relative;
-  width: 300px;
-  height: 300px;
-  margin:2%;
+  width: 200px;
+  height: 100%;
+  margin: 2%;
   box-shadow: 0 5px 20px rgba(0,0,0,.3);
   display:flex;
   flex-direction:column;
-  padding: 20px 20px 40px;
+  padding: 20px 20px 20px;
   border-radius:10px;
   transition: .3s; 
 }
 .shoppingcard:hover{
-  transform : translateY(-15px);
+  transform : translateY(-1px);
   box-shadow: 0 5px 10px rgba(0,0,0, .2);
 }
 .shoppingcard--image{
   width:100%;
-  height:60%;
+  height:100%;
+  position: relative;
 }
 .shoppingcard--image img{
-  width:244px;
+  width:200px;
+  height:250px;
 }
-
-.shoppingcard--price{
+.shoppingcard--icons{
+  position: absolute;
+  z-index: 1;
+  opacity:0.5;
+  display: flex;
+  padding:2%;
+}
+.shoppingcard--name{
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-
-.shoppingcard--stars{
-  margin: 10px 2px;
+.shoppingcard--price{
+  display: flex;
+  justify-content: right;
 }
-
+.shoppingcard--stars{
+  margin-right: 2px;
+}
+.shoppingcard--description{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px; 
+}
 .shoppingcard--buy{
-  position:absolute;
+    padding:2%;
     bottom: 20px;
     right: 20px;
+    
 }
 
 .shoppingcard--buy button{
@@ -164,18 +223,165 @@ i{
   border:none;
   background-color: var(--textColor);
   color: var(--sectionBack);
-  font-size: 18px;
+  font-size: 10px;
   text-transform: capitalize;
   cursor: pointer;
   transition:  .5s;
+  margin: 2px;
 }
 
 .shoppingcard--buy button:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .shoppingcard--wishlist{
   color:white;
   border:black;
   outline-color: black;
+}
+:root{
+  --bodyBack:#ffeaed;
+  --textColor:#1b2741;
+  --starColor:#f67034;
+  --sectionBack:#f7f6f9;
+}
+
+/* biling form */
+
+/* .checkoutform{
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+} */
+
+.billingform{
+  margin:0; padding:0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:25px;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #2ecc71 60%, #27ae60 40.1%);
+}
+
+.billingform form{
+  padding:20px;
+  width:700px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+}
+
+.billingform form .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:15px;
+}
+
+.billingform form .row .col{
+  flex:1 1 250px;
+}
+
+.billingform form .row .col .title{
+  font-size: 20px;
+  color:#333;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.billingform form .row .col .inputBox{
+  margin:15px 0;
+}
+
+.billingform form .row .col .inputBox span{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.billingform form .row .col .inputBox input{
+  width: 100%;
+  border:1px solid #ccc;
+  padding:10px 15px;
+  font-size: 15px;
+  text-transform: none;
+}
+
+.billingform form .row .col .inputBox input:focus{
+  border:1px solid #000;
+}
+
+.billingform form .row .col .flex{
+  display: flex;
+  gap:15px;
+}
+
+.billingform form .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+.billingform form .row .col .inputBox img{
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+.billingform form .submit-btn{
+  width: 100%;
+  padding:12px;
+  font-size: 17px;
+  background: #27ae60;
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.billingform form .submit-btn:hover{
+  background: #2ecc71;
+}
+
+.checkout-form{
+  padding:2%;
+
+}
+
+.checkoutform--title{
+  color:grey;
+}
+.checkoutform{
+  padding:0% 5%;
+}
+.checkoutform input{
+  border:0px;
+  border-bottom:1px solid #ccc;
+  width:100%;
+}
+
+.checkoutform input:focus{
+  border:0px;
+}
+
+.checkoutform--visamatercardicon{
+  width:100px;
+}
+
+
+.checkoutform--onsubmit{
+  width:100%;
+  height:25px;
+  color:white;
+  background-color: #27ae60;
+  border:1px black solid;
+}
+
+.checkoutform--onsubmit:hover{
+  background-color: #2ecc71;
+}
+
+.checkoutform--close{
+  margin-left:100%;
+  background-color: grey;
+  border:1px black solid;
 }

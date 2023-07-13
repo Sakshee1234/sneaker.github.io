@@ -16,7 +16,7 @@ export default function Checkoutform(props){
     }
     return(
         <div className="checkout-form">
-            <button className="checkoutform--close" onClick={props.toggleForm}><i class="fa-light fa-xmark fa"></i></button>
+            <button className="checkoutform--close" onClick={props.toggleForm}>X</button>
             <form >
             <h2 className="checkoutform--title">Personal Information</h2>
                 <div>

@@ -3,15 +3,21 @@ import React from "react"
 export default function Footer(props){
     const currDate=new Date();
     const currYear=currDate.getFullYear();
+
+    const [showModal,setShowModal]=React.useState(false);
+
+    function toggleModal(){
+        setShowModal(prevShowModal=>!prevShowModal);
+    }
     return (
         <div className="footer"> 
             <div className="footer--firstline">
                 <span className="footer--subscribe">
                     Subscribe to our newsletter
-                    <div classNameName="input-group mb-3">
-                        <input type="text" classNameName="form-control" placeholder="your@gmail.com" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-                        <span classNameName="input-group-append">
-                            <button classNameName="btn btn-outline-secondary" type="button">Join</button>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="your@gmail.com" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                        <span className="input-group-append">
+                            <button className="btn btn-outline-secondary" type="button" onClick={toggleModal}>Join</button>
                         </span>
                     </div>
                 </span>
@@ -36,6 +42,17 @@ export default function Footer(props){
                 <a href="" className="contactus--icon"><i className="fa-brands fa-whatsapp"></i></a>
             </div>
             <div className="contactus--copyright">&#169; CopyRight.All rights reserved {currYear}</div>
+            {showModal && 
+                    <div className="modal">
+                        <div className="modal--closeBtn">
+                            <button onClick={toggleModal}>X</button>
+                        </div>
+                        <div className="modal--text">
+                            <h1>Subscribed Successfully!</h1>
+                        </div>
+                    </div>
+            }
         </div>
+        
     )
 }

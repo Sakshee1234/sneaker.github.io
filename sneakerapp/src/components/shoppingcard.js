@@ -31,7 +31,6 @@ export default function Shoppingcard(props){
                 </div>
                 <div className="shoppingcard--icons">
                     <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={addOrRemovefromWishlist}></i>
-                    {/* <i className="fa-duotone fa-shopping-cart fa" style={cartstyle} onClick={addOrRemovefromCart}></i> */}
                 </div>
                 
                 <div className="shoppingcard--price">

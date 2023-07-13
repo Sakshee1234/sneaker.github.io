@@ -124,7 +124,7 @@ export const shoppingcarddata=[
 
 
 
-export const airforce = [
+export const AIRFORCE = [
     { 
       image: "https://dummywebsite.com/images/nike_air_max_90.jpg", 
       title: "NikeAirFliteLite",
@@ -170,7 +170,7 @@ export const airforce = [
     }
   ];
 
- export const jordan = [
+ export const JORDAN = [
     { 
       image: "https://dummywebsite.com/images/nike_air_max_90.jpg", 
       title: "NikeBlazerLow",
@@ -215,7 +215,7 @@ export const airforce = [
     }
   ];
 
-  export const blazer = [
+  export const BLAZER = [
     { 
       image: "https://dummywebsite.com/images/nike_air_max_90.jpg", 
       title: "NikeDownShifter",
@@ -260,7 +260,7 @@ export const airforce = [
     }
   ];
 
-  export const crater = [
+  export const CRATER = [
     { 
       image: "https://dummywebsite.com/images/nike_air_max_90.jpg", 
       title: "NikeKillshot",
@@ -307,7 +307,7 @@ export const airforce = [
   ];
 
   
-  export const hippie = [
+  export const HIPPIE = [
     { 
       image: "https://dummywebsite.com/images/nike_air_max_90.jpg", 
       title: "NikePegasus",

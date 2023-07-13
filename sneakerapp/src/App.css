@@ -114,7 +114,9 @@ i{
   color:gray;
   text-align: center;
 }
-
+.footer{
+  background-color: #000;
+}
 .footer--firstline{
   display:flex;
   justify-content: space-around;
@@ -124,6 +126,10 @@ i{
   display:flex;
   flex-direction: column;
   justify-content: space-around;
+  color:white
+}
+.footer--contactno,.footer--emailid{
+  color:white;
 }
 .contactus{
   display:flex;
@@ -131,7 +137,7 @@ i{
   justify-content:center;
 }
 .contactus--icon{
-  color:black;
+  color:white;
   margin:0% 2%;
 }
 .contactus--icon:hover{
@@ -141,6 +147,7 @@ i{
   display: flex;
   justify-content: center;
   padding-bottom: 2%;
+  color:white
 }
 
 .contact--link:hover{

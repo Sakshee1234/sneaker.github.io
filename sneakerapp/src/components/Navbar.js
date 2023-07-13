@@ -1,6 +1,7 @@
 import React from "react"
 
-export default function Navbar() {
+export default function Navbar(props) {
+    
     return (
         <>
             <nav>
@@ -16,14 +17,13 @@ export default function Navbar() {
                         <i className="fa-duotone fa-shopping-cart fa nav--cart-icon"></i>
                         <i className="fa-duotone fa-heart fa nav--wishlist"></i>
                     </div>
-                    {/* <div className="nav--limited-offer">Limited Offer</div> */}
                 </div>
                 <div className='nav--secondline'>
-                    <a className="nav--categories">AIR FORCE</a>
-                    <a className="nav--categories">JORDAN</a>
-                    <a className="nav--categories">BLAZER</a>
-                    <a className="nav--categories">CRATER</a>
-                    <a className="nav--categories">HIPPIE</a>
+                    <a className="nav--categories" onClick={()=>props.changeTab('AIRFORCE')}>AIR FORCE</a>
+                    <a className="nav--categories" onClick={()=>props.changeTab('JORDAN')}>JORDAN</a>
+                    <a className="nav--categories" onClick={()=>props.changeTab('BLAZER')}>BLAZER</a>
+                    <a className="nav--categories" onClick={()=>props.changeTab('CRATER')}>CRATER</a>
+                    <a className="nav--categories" onClick={()=>props.changeTab('HIPPIE')}>HIPPIE</a>
                 </div>
             </nav>
         </>

@@ -4,10 +4,10 @@ import Navbar from './components/Navbar.js';
 import Card from './components/Card.js';
 import Footer from './components/Footer';
 import Shoppingcard from './components/shoppingcard';
-import {airforce} from './shoppingcardsdata.js';
+import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
 import img from "./images/img.png"
-import { Link} from "react-router-dom";
 import Checkout from './components/checkoutform';
+
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -26,18 +26,30 @@ const data=[
       description:"Keep in touch via email and support system."
   }
 ]
-function App() {
-  const cards=data.map(function(data){
-    return(
-      <Card
-        cards={data}
-      />
-    )
+  function App() {
+    const cards=data.map(function(data){
+      return(
+        <Card
+          cards={data}
+        />
+      )
   })
 
-  const [shoppingcard,setShoppingcard]=React.useState(airforce);
+  const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
+  function changeTab(str){
+    if(str==="BLAZER")
+    setShoppingcard(BLAZER);
+    else if(str==="AIRFORCE")
+    setShoppingcard(AIRFORCE);
+    else if(str==="JORDAN")
+    setShoppingcard(JORDAN);
+    else if(str==="CRATER")
+    setShoppingcard(CRATER);
+    else if(str==="HIPPIE")
+    setShoppingcard(HIPPIE);
+  }
 
-  const airforcels=shoppingcard.map(function(data){
+  const shoppingcards=shoppingcard.map(function(data){
     return(
       <Shoppingcard
         data={data}
@@ -45,38 +57,33 @@ function App() {
       />
     )
   })
-  
-  const [displayForm,setDisplayForm]=React.useState(false);
+
+  const [displayForm,setDisplayForm]=React.useState(true);
 
   function toggleForm(){
     setDisplayForm(prevDisplayForm=>!prevDisplayForm)
   }
-
-  const styleDisplayForm={
-    display: displayForm ? "block":"none"
-  }
+  
   return (
     <>
-      <div className="App">
-
-        <Navbar/>
+      {displayForm && <div className="App">
+        <Navbar
+        changeTab={changeTab}
+        />
         <div className="salescards">
-          {airforcels}
+          {shoppingcards}
         </div>
         <div className="cardsthree">
-          {cards}
+          {cards}    
         </div>
         <img src={img} className="footimage"/>
-        <hr/>
         <Footer/>
-        
-      </div>
-      <div className='checkoutform' style={styleDisplayForm}>
+      </div>}
+      {!displayForm && <div className='checkoutform' >
           <Checkout
             toggleForm={toggleForm}
           />
-      </div>
-
+      </div>}
     </>
   );
 }

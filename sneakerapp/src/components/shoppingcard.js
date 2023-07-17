@@ -1,5 +1,4 @@
 import React from "react"
-import blazer from "../blazer2.jpg"
 export default function Shoppingcard(props){
 
     const [wishlist,setWishlist]=React.useState(props.data.wishlist);
@@ -10,24 +9,19 @@ export default function Shoppingcard(props){
     function addOrRemovefromWishlist(){
         setWishlist(prevwishlist=> !prevwishlist);
     }
-    const [cart,setCart]=React.useState(props.data.addtocart);
-    const cartstyle={
-        color:cart?"green":"grey"
-    }
-    function addOrRemovefromCart(){
-        setCart(prevcart=> !prevcart);
-    }
+
     const styleOrange={
         color:"orange"
     }
     const styleBlack={
         color:"grey"
     }
+
     return (
         <>
             <div className="shoppingcard">
                 <div className="shoppingcard--image">
-                    <img src={blazer}/>
+                    <img src={props.data.image}/>
                 </div>
                 <div className="shoppingcard--icons">
                     <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={addOrRemovefromWishlist}></i>
@@ -53,7 +47,7 @@ export default function Shoppingcard(props){
                 </div>
 
                 <div className="shoppingcard--buy">
-                    <button>Add to cart</button>
+                    <button onClick={()=>props.addToCart(props.data.title)}>Add to cart</button>
                     <button onClick={props.toggleForm}>buy now</button>
                 </div>
             </div>

@@ -7,6 +7,8 @@ import Shoppingcard from './components/shoppingcard';
 import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
 import img from "./images/img.png"
 import Checkout from './components/checkoutform';
+import Cart from './components/Cart';
+import Firstpage from './components/firstPage';
 
 const data=[
   {
@@ -34,6 +36,8 @@ const data=[
         />
       )
   })
+  
+
 
   const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
   function changeTab(str){
@@ -54,32 +58,110 @@ const data=[
       <Shoppingcard
         data={data}
         toggleForm={toggleForm}
+        addToCart={addToCart}
       />
     )
   })
 
-  const [displayForm,setDisplayForm]=React.useState(true);
+  const [displayForm,setDisplayForm]=React.useState(false);
 
   function toggleForm(){
     setDisplayForm(prevDisplayForm=>!prevDisplayForm)
   }
   
+  const [cart,setCart]=React.useState([]);
+
+  function addToCart(title){
+    BLAZER.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+
+    AIRFORCE.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+
+    JORDAN.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+
+    CRATER.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+
+    HIPPIE.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+  }
+  function addItemQuantity(title){
+    setCart(prevCart=>{
+      return prevCart.map((data)=>{
+        return data.title===title?{...data,qty:data.qty+1}:data;
+      })
+    })
+  }
+  function subItemQuantity(title){
+    setCart(prevCart=>{
+      return prevCart.map((data)=>{
+        return data.title===title?{...data,qty:data.qty-1}:data;
+      })
+    })
+  }
+  function emptyCart(){
+    setCart([]);
+  }
+  function removeItem(title){
+    setCart(prevCart=>{
+      return prevCart.filter((data)=>{
+        return data.title!==title;
+      })
+    })
+  }
   return (
     <>
-      {displayForm && <div className="App">
-        <Navbar
-        changeTab={changeTab}
-        />
-        <div className="salescards">
-          {shoppingcards}
+      {
+        !displayForm && <div className="App">
+          <Firstpage/>
+          <Navbar
+          changeTab={changeTab}
+          />
+          <div className="salescards">
+            {shoppingcards}
+          </div>
+          <div className="cardsthree">
+            {cards}    
+          </div>
+          <img src={img} className="footimage"/>
+          <Footer/>
+          <Cart
+            cart={cart}
+            emptyCart={emptyCart} 
+            addItemQuantity={addItemQuantity}
+            subItemQuantity={subItemQuantity}
+            removeItem={removeItem}
+          />
         </div>
-        <div className="cardsthree">
-          {cards}    
-        </div>
-        <img src={img} className="footimage"/>
-        <Footer/>
-      </div>}
-      {!displayForm && <div className='checkoutform' >
+      }
+      {displayForm && <div className='checkoutform' >
           <Checkout
             toggleForm={toggleForm}
           />
@@ -87,6 +169,5 @@ const data=[
     </>
   );
 }
-
 
 export default App;

@@ -17,7 +17,7 @@ export default function Footer(props){
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" placeholder="your@gmail.com" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                         <span className="input-group-append">
-                            <button className="btn btn-outline-secondary" type="button" onClick={toggleModal}>Join</button>
+                            <button className="btn btn-outline-secondary " type="button" onClick={toggleModal}>Join</button>
                         </span>
                     </div>
                 </span>

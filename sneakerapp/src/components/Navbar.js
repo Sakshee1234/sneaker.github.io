@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function Navbar(props) {
-    
     return (
         <>
             <nav>
@@ -10,7 +9,7 @@ export default function Navbar(props) {
                     <div className="input-group mb-3 nav--search-bar">
                         <input type="text" className="form-control nav--search-input" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                         <span className="input-group-append">
-                            <button className="btn btn-outline-secondary nav--search-icon" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button className="btn btn-outline-secondary nav--search-icon" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
                         </span>
                     </div>
                     <div className="nav--cart">

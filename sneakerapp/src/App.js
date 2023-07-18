@@ -9,6 +9,7 @@ import img from "./images/img.png"
 import Checkout from './components/checkoutform';
 import Cart from './components/Cart';
 import Firstpage from './components/firstPage';
+import Wishlist from './components/Wishlist';
 
 const data=[
   {
@@ -37,8 +38,24 @@ const data=[
       )
   })
   
-
-
+  const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
+  function addOrRemovefromWishlist(title){
+    setWishlist(BLAZER.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(CRATER.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(JORDAN.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(HIPPIE.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(AIRFORCE.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+  }
   const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
   function changeTab(str){
     if(str==="BLAZER")
@@ -59,6 +76,7 @@ const data=[
         data={data}
         toggleForm={toggleForm}
         addToCart={addToCart}
+        addOrRemovefromWishlist={addOrRemovefromWishlist}
       />
     )
   })
@@ -122,7 +140,7 @@ const data=[
   function subItemQuantity(title){
     setCart(prevCart=>{
       return prevCart.map((data)=>{
-        return data.title===title?{...data,qty:data.qty-1}:data;
+        return data.title===title?{...data,qty:(data.qty>1?data.qty-1:data.qty)}:data;
       })
     })
   }
@@ -137,6 +155,7 @@ const data=[
     })
   }
   return (
+    
     <>
       {
         !displayForm && <div className="App">
@@ -158,6 +177,9 @@ const data=[
             addItemQuantity={addItemQuantity}
             subItemQuantity={subItemQuantity}
             removeItem={removeItem}
+          />
+          <Wishlist
+          addToCart={addToCart}
           />
         </div>
       }

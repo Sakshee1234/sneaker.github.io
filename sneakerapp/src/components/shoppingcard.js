@@ -1,13 +1,8 @@
 import React from "react"
 export default function Shoppingcard(props){
 
-    const [wishlist,setWishlist]=React.useState(props.data.wishlist);
     const wishliststyle={
-        color:wishlist?"red":"grey"
-    }
-
-    function addOrRemovefromWishlist(){
-        setWishlist(prevwishlist=> !prevwishlist);
+        color:props.data.wishlist?"red":"grey"
     }
 
     const styleOrange={
@@ -24,7 +19,7 @@ export default function Shoppingcard(props){
                     <img src={props.data.image}/>
                 </div>
                 <div className="shoppingcard--icons">
-                    <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={addOrRemovefromWishlist}></i>
+                    <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={()=>props.addOrRemovefromWishlist(props.data.title)}></i>
                 </div>
                 
                 <div className="shoppingcard--price">

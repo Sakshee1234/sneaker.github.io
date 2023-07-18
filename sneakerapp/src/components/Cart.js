@@ -8,7 +8,7 @@ export default function Cart(props) {
   return (
     <div>
       <div className="cart">
-        <h2 className="cart--title">Cart</h2>  
+        <h1 className="cart--title">Cart</h1>  
         {props && props.cart.map((data) => (
           <span key={data.id}>
             <div className='cart--items'>
@@ -38,7 +38,7 @@ export default function Cart(props) {
           </span>
         ))}
         <div className='cart--footer'>
-          <p>Total: ${totalPrice}</p>
+          <p className="cart--footer-totalPrice">Total: ${totalPrice}</p>
           <button onClick={()=>props.emptyCart()}>Empty Cart</button>
         </div>
       </div>

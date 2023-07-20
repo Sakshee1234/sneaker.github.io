@@ -1,102 +1,140 @@
-import React from "react";
-
+import React, { useState } from "react";
 import visamatercard from "../images/visa_mastercard.png";
+import { useNavigate } from "react-router-dom";
 
-export default function Checkoutform(props){
-    const [formData,setFormData]=React.useState(
-        {fullName:"",email:"",address:"",contact:"",cardnumber:"",MM:"",YY:"",CVV:""}
-    )
-    function handleChange(event){
-        setFormData(prevFormData=>{
-            return{
-                ...prevFormData,
-                [event.target.name]:event.target.value
-            }
-        })
-    }
-    return(
-        <div className="checkout-form">
-            <button className="checkoutform--close" onClick={props.toggleForm}>X</button>
-            <form >
-            <h2 className="checkoutform--title">Personal Information</h2>
-                <div>
-                    <p>Name Surname</p>
-                </div>
+export default function Checkoutform(props) {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    address: "",
+    contact: "",
+    cardNumber: "",
+    MM: "",
+    YY: "",
+    CVV: ""
+  });
+  const navigate = useNavigate();
+  const handleOrderDetails = () => {
+    navigate("/OrderDetails");
+  }
+
+  const handleChange = (event) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [event.target.name]: event.target.value
+    }));
+  };
+
+  return (
+    <div className="checkout-form--container">
+      <div className="checkout-form">
+        <button className="checkoutform--close" onClick={props.toggleForm}>
+          X
+        </button>
+        <form>
+          <h2 className="checkoutform--title">Personal Information</h2>
+          <div className="form-group">
+            <label htmlFor="fullName">Name Surname</label>
+            <input
+              type="text"
+              id="fullName"
+              placeholder="Full Name"
+              onChange={handleChange}
+              name="fullName"
+              value={formData.fullName}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              placeholder="Email"
+              onChange={handleChange}
+              name="email"
+              value={formData.email}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="contact">Contact</label>
+            <input
+              type="text"
+              id="contact"
+              placeholder="Contact"
+              onChange={handleChange}
+              name="contact"
+              value={formData.contact}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              placeholder="Address"
+              onChange={handleChange}
+              name="address"
+              value={formData.address}
+            />
+          </div>
+          <h2 className="checkoutform--title">Card Information</h2>
+          <div className="card-details">
+            <img
+              src={visamatercard}
+              className="checkoutform--visamatercardicon"
+              alt="Visa/Mastercard"
+            />
+            <div className="form-group">
+              <label htmlFor="cardNumber">Card Number</label>
+              <input
+                type="text"
+                id="cardNumber"
+                placeholder="Card Number"
+                onChange={handleChange}
+                name="cardNumber"
+                value={formData.cardNumber}
+              />
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="MM">MM</label>
                 <input
-                    type="text"
-                    placeholder="Full Name"
-                    onChange={handleChange}
-                    name="fullName"
-                    value={formData.fullName}
+                  type="text"
+                  id="MM"
+                  placeholder="MM"
+                  onChange={handleChange}
+                  name="MM"
+                  value={formData.MM}
                 />
-                
-                <div>
-                    <p>Email</p>
-                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="YY">YY</label>
                 <input
-                    type="text"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    name="email"
-                    value={formData.email}
+                  type="text"
+                  id="YY"
+                  placeholder="YY"
+                  onChange={handleChange}
+                  name="YY"
+                  value={formData.YY}
                 />
-                <div>
-                    <p>Contact</p>
-                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="CVV">CVV</label>
                 <input
-                    type="text"
-                    placeholder="Contact"
-                    onChange={handleChange}
-                    name="contact"
-                    value={formData.contact}
+                  type="text"
+                  id="CVV"
+                  placeholder="CVV"
+                  onChange={handleChange}
+                  name="CVV"
+                  value={formData.CVV}
                 />
-                <div>
-                    <p>Address</p>
-                </div>
-                <input
-                    type="text"
-                    placeholder="Address"
-                    onChange={handleChange}
-                    name="address"
-                    value={formData.address}
-                />
-                <h2 className="checkoutform--title">Card Information</h2>
-                <img src={visamatercard} className="checkoutform--visamatercardicon"/>
-                <p>Card Number</p>
-                <input
-                    type="text"
-                    placeholder="Card Number"
-                    onChange={handleChange}
-                    name="cardNumber"
-                    value={formData.cardNumber}
-                />
-                <div>
-                    <input
-                        type="text"
-                        placeholder="MM"
-                        onChange={handleChange}
-                        name="MM"
-                        value={formData.MM}
-                    />
-                    <input
-                        type="text"
-                        placeholder="YY"
-                        onChange={handleChange}
-                        name="YY"
-                        value={formData.YY}
-                    />
-                    <input
-                        type="text"
-                        placeholder="CVV"
-                        onChange={handleChange}
-                        name="CVV"
-                        value={formData.CVV}
-                    />
-                </div>
-                <br/>
-                <button className="checkoutform--onsubmit">Checkout</button>
-            </form>
-        </div>
-    )
+              </div>
+            </div>
+          </div>
+          <br />
+          <button className="checkoutform--onsubmit" onClick={handleOrderDetails}>Checkout</button>
+        </form>
+      </div>
+    </div>
+  );
 }
-

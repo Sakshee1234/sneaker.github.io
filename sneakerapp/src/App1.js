@@ -1,20 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Firstpage from './components/firstPage';
-import App1 from './App1';
-import Cart from './components/Cart';
-import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
-import Shoppingcard from './components/shoppingcard';
-import Wishlist from './components/Wishlist';
+import React from 'react';
+import Navbar from './components/Navbar.js';
+import Card from './components/Card.js';
 import Footer from './components/Footer';
-import ProductDetails from './components/ProductDetails';
-import Account from './components/Account';
-import Account1 from './components/Account1';
-import OrderDetails from './components/OrderDetails';
-import About from './components/About';
+import Shoppingcard from './components/shoppingcard';
+import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
+import img from "./images/img.png"
+import Checkout from './components/checkoutform';
+import Cart from './components/Cart';
+import Wishlist from './components/Wishlist';
+import Carousel from './components/Carousel';
 
-const App = () => {
+const data=[
+  {
+      icon:"fa-solid fa-truck-fast",
+      title: "FREE SHIPPING",
+      description: "Free worldwide shipping on all orders.",
+  }
+  ,
+  {
+      icon:"fa-duotone fa-box fa",
+      title:"30 DAYS RETURN",
+      description:"No question return and easy refund in 14 day's."
+  },
+  {
+      icon:"fa-regular fa-paper-plane",
+      title:"CONTACT US",
+      description:"Keep in touch via email and support system."
+  }
+]
+  function App1() {
+    const cards=data.map(function(data){
+      return(
+        <Card
+          cards={data}
+        />
+      )
+  })
+  
   const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
   function addOrRemovefromWishlist(title){
     setWishlist(BLAZER.map((data)=>{
@@ -32,6 +55,38 @@ const App = () => {
     setWishlist(AIRFORCE.map((data)=>{
       return data.title===title?data.wishlist=!data.wishlist:data;
     }))
+  }
+  const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
+  function changeTab(str){
+    if(str==="BLAZER")
+    setShoppingcard(BLAZER);
+    else if(str==="AIRFORCE")
+    setShoppingcard(AIRFORCE);
+    else if(str==="JORDAN")
+    setShoppingcard(JORDAN);
+    else if(str==="CRATER")
+    setShoppingcard(CRATER);
+    else if(str==="HIPPIE")
+    setShoppingcard(HIPPIE);
+  }
+  
+  const shoppingcards=shoppingcard.map(function(data){
+    return(
+      <Shoppingcard
+      data={data}
+      toggleForm={toggleForm}
+      addToCart={addToCart}
+      addOrRemovefromWishlist={addOrRemovefromWishlist}
+    />
+
+    )
+  })
+
+  const [displayForm,setDisplayForm]=React.useState(false);
+  
+
+  function toggleForm(){
+    setDisplayForm(prevDisplayForm=>!prevDisplayForm)
   }
   
   const [cart,setCart]=React.useState([]);
@@ -106,32 +161,43 @@ const App = () => {
   }
 
   return (
-    <Router>
-      {/* <Navbar/> */}
-      <Routes>
-        <Route path="/" element={<Firstpage />} />
-        <Route path='/App1' element={<App1/>}/>
-        <Route path='/About' element={<About/>}/>
-        <Route path='/OrderDetails' element={<OrderDetails/>}/>
-        <Route path='/Account' element={<Account/>}/>
-        <Route path='/Account1' element={<Account1/>}/>
-        <Route path='/Cart' element={<Cart
+    
+    <>
+      {
+        !displayForm && <div className="App">
+          <Navbar
+          changeTab={changeTab}
+          />
+          <div className='carousel'>
+            <Carousel/>
+          </div>
+          <div className="salescards">
+            {shoppingcards}
+          </div>
+          <div className="cardsthree">
+            {cards}    
+          </div>
+          <img src={img} className="footimage"/>
+          <Footer/>
+          {/* <Cart
             cart={cart}
             emptyCart={emptyCart} 
             addItemQuantity={addItemQuantity}
             subItemQuantity={subItemQuantity}
             removeItem={removeItem}
-            addOrRemovefromWishlist={addOrRemovefromWishlist}
-          />}/>
-        <Route path='/Wishlist' element={<Wishlist
+          /> */}
+          {/* <Wishlist
             addToCart={addToCart}
-          />}/>
-          <Route path='/Footer' element={<Footer/>}/>
-          <Route path='/ProductDetails/:title' element={<ProductDetails/>}/>
-      </Routes>
-      {/* <Footer/> */}
-    </Router>
+          /> */}
+        </div>
+      }
+      {displayForm && <div className='checkoutform' >
+          <Checkout
+            toggleForm={toggleForm}
+          />
+      </div>}
+    </>
   );
-};
+}
 
-export default App;
+export default App1;

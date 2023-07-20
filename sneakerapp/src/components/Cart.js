@@ -1,4 +1,6 @@
 import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function Cart(props) {
   var totalPrice=0;
@@ -6,7 +8,8 @@ export default function Cart(props) {
     totalPrice+=(data.price*data.qty)
   ))
   return (
-    <div>
+    <div className='cart--container'>
+      <Navbar/>
       <div className="cart">
         <h1 className="cart--title">Cart</h1>  
         {props && props.cart.map((data) => (
@@ -42,6 +45,7 @@ export default function Cart(props) {
           <button onClick={()=>props.emptyCart()}>Empty Cart</button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

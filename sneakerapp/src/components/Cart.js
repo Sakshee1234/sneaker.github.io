@@ -1,4 +1,6 @@
 import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function Cart(props) {
   var totalPrice=0;
@@ -8,6 +10,10 @@ export default function Cart(props) {
   
   return (
     <div className='cart--container'>
+<<<<<<< HEAD
+=======
+      <Navbar/>
+>>>>>>> 4328e655bcc07bfe070fa12ddff65509babc8e70
       <div className="cart">
         <h1 className="cart--title">Cart</h1>  
         {props && props.cart.map((data) => (
@@ -43,6 +49,7 @@ export default function Cart(props) {
           <button onClick={()=>props.emptyCart()}>Empty Cart</button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

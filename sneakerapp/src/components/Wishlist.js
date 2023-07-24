@@ -4,6 +4,8 @@ import { JORDAN } from "../shoppingcardsdata";
 import { HIPPIE } from "../shoppingcardsdata";
 import { CRATER } from "../shoppingcardsdata";
 import { AIRFORCE } from "../shoppingcardsdata";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function Wishlist(props){
     var wishlist=[];
@@ -35,6 +37,10 @@ export default function Wishlist(props){
 
     return (
         <div className="wishlist--container">
+<<<<<<< HEAD
+=======
+            <Navbar/>
+>>>>>>> 4328e655bcc07bfe070fa12ddff65509babc8e70
           <div className="wishlist">
             <h1 className="wishlist--titlesymbol">❤️</h1>
             <h1 className="wishlist--title">My Wishlist </h1> 
@@ -57,6 +63,7 @@ export default function Wishlist(props){
               </span>
             ))}
           </div>
+          <Footer/>
         </div>
       );
 }

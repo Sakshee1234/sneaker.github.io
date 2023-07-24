@@ -130,6 +130,7 @@ const data=[
       }
     })
   }
+
   function addItemQuantity(title){
     setCart(prevCart=>{
       return prevCart.map((data)=>{
@@ -137,6 +138,7 @@ const data=[
       })
     })
   }
+
   function subItemQuantity(title){
     setCart(prevCart=>{
       return prevCart.map((data)=>{
@@ -144,6 +146,7 @@ const data=[
       })
     })
   }
+  
   function emptyCart(){
     setCart([]);
   }
@@ -154,13 +157,14 @@ const data=[
       })
     })
   }
+
   return (
     
     <>
       {
         !displayForm && <div className="App">
           <Firstpage/>
-          <Navbar
+          {/* <Navbar
           changeTab={changeTab}
           />
           <div className="salescards">
@@ -179,8 +183,8 @@ const data=[
             removeItem={removeItem}
           />
           <Wishlist
-          addToCart={addToCart}
-          />
+            addToCart={addToCart}
+          /> */}
         </div>
       }
       {displayForm && <div className='checkoutform' >

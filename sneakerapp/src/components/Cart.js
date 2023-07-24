@@ -5,8 +5,9 @@ export default function Cart(props) {
   props.cart.map((data) => (
     totalPrice+=(data.price*data.qty)
   ))
+  
   return (
-    <div>
+    <div className='cart--container'>
       <div className="cart">
         <h1 className="cart--title">Cart</h1>  
         {props && props.cart.map((data) => (

@@ -34,7 +34,7 @@ export default function Wishlist(props){
     })
 
     return (
-        <div>
+        <div className="wishlist--container">
           <div className="wishlist">
             <h1 className="wishlist--titlesymbol">❤️</h1>
             <h1 className="wishlist--title">My Wishlist </h1> 

@@ -2,11 +2,13 @@ import React, {useEffect} from "react"
 import {Link, useNavigate} from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-
+import { useLocation } from 'react-router-dom';
 export default function Navbar(props) {
     useEffect(() => {
         Aos.init({ duration: 2000 });
       }, []);
+      const location = useLocation();
+    const currentPath = location.pathname;
 
     const scrollToFooter = () => {
         const footer = document.getElementById('Contact');
@@ -32,6 +34,7 @@ export default function Navbar(props) {
     const handleWishlistClick = () => {
         navigate('/Wishlist');
     }
+    
     return (
         <>
             <nav>
@@ -52,13 +55,13 @@ export default function Navbar(props) {
                     <a className="nav--categories" onClick={handleHomeClick}>HOME</a>
                     <div className="dropdown--container">
                         <a className="nav--categories" onClick={handleProductsClick}>PRODUCTS</a>
-                        <div className="dropdown--menu">
+                        {currentPath==='/App1' && <div className="dropdown--menu">
                             <a className="nav1--categories" onClick={()=>props.changeTab('AIRFORCE')}>AIR FORCE</a>
                             <a className="nav1--categories" onClick={()=>props.changeTab('JORDAN')}>JORDAN</a>
                             <a className="nav1--categories" onClick={()=>props.changeTab('BLAZER')}>BLAZER</a>
                             <a className="nav1--categories" onClick={()=>props.changeTab('CRATER')}>CRATER</a>
                             <a className="nav1--categories" onClick={()=>props.changeTab('HIPPIE')}>HIPPIE</a>
-                        </div>
+                        </div>}
                     </div>
                     <a className="nav--categories" onClick={handleAccountClick}>ACCOUNT</a>
                     <a className="nav--categories" onClick={handleAboutClick}>ABOUT</a>

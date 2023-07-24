@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Firstpage from './components/firstPage';
-import App1 from './App1';
+// import App1 from './App1';
 import Cart from './components/Cart';
 import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
 import Shoppingcard from './components/shoppingcard';
@@ -18,6 +18,8 @@ import Checkout from './components/checkoutform';
 import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
 import img from "./images/img.png"
+import DealofDay from './components/DealofDay';
+import Checkoutform from './components/checkoutform';
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -83,7 +85,6 @@ const App = () => {
     return(
       <Shoppingcard
       data={data}
-      toggleForm={toggleForm}
       addToCart={addToCart}
       addOrRemovefromWishlist={addOrRemovefromWishlist}
     />
@@ -210,7 +211,7 @@ const App = () => {
         <Route path='/App1' element={
           <>
           {
-            !displayForm && <div className="App">
+            <div className="App">
               <Navbar
               changeTab={changeTab}
               />
@@ -223,15 +224,11 @@ const App = () => {
               <div className="cardsthree">
                 {cards}    
               </div>
+              <DealofDay/>
               <img src={img} className="footimage"/>
               <Footer/>
             </div>
           }
-          {displayForm && <div className='checkoutform' >
-              <Checkout
-                toggleForm={toggleForm}
-              />
-          </div>}
         </>
         }/>
         <Route path='/About' element={<About />}/>
@@ -244,12 +241,14 @@ const App = () => {
             addItemQuantity={addItemQuantity}
             subItemQuantity={subItemQuantity}
             removeItem={removeItem}
+            addToCart={addToCart}
           />}/>
         <Route path='/Wishlist' element={<Wishlist
             addToCart={addToCart}
           />}/>
           <Route path='/Footer' element={<Footer/>}/>
-          <Route path='/ProductDetails/:title' element={<ProductDetails/>}/>
+          <Route path='/ProductDetails/:title' element={<ProductDetails addToCart={addToCart} />} />
+          <Route path='/checkoutform' element={<Checkoutform/>}/>
       </Routes>
     </Router>
   );

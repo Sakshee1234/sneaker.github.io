@@ -7,8 +7,10 @@ import { CRATER } from "../shoppingcardsdata";
 import { HIPPIE } from "../shoppingcardsdata";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import App from "../App";
+import { useNavigate } from "react-router-dom";
 
-export default function ProductDetails() {
+export default function ProductDetails(props) {
   const { title } = useParams();
   const products = [...AIRFORCE, ...JORDAN, ...BLAZER, ...CRATER, ...HIPPIE];
   
@@ -35,6 +37,10 @@ export default function ProductDetails() {
   const toggleText = () => {
     setShowFullText(!showFullText);
   };
+  const navigate = useNavigate();
+  const handleBuyNowClick=()=>{
+    navigate('/checkoutform')
+  }
   if (!product) {
     return <div>Product not found.</div>;
   }
@@ -59,8 +65,8 @@ export default function ProductDetails() {
         <img src={image} alt='' />
       </div>
       <div className="product-details--buy">
-        <button className="product-details--addToCart">Add to cart</button>
-        <button className="product-details--buyNow">buy now</button>
+        <button className="product-details--addToCart" onClick={()=>props.addToCart(product.title)} disabled={product.cart}>{!product.cart?"Add to cart":<span className="shoppingcard--addedToCart">Added &nbsp;<i className="fa-solid fa-check afterBuyTick"></i></span>}</button>
+        <button className="product-details--buyNow" onClick={()=>handleBuyNowClick()}>buy now</button>
       </div>
       <div className="product-details--colour">
         {

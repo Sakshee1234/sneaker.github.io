@@ -24,11 +24,13 @@ export default function Checkoutform(props) {
       [event.target.name]: event.target.value
     }));
   };
-
+  const handleCloseClick=()=>{
+    navigate('/App1')
+  }
   return (
     <div className="checkout-form--container">
       <div className="checkout-form">
-        <button className="checkoutform--close" onClick={props.toggleForm}>
+        <button className="checkoutform--close" onClick={()=>handleCloseClick()}>
           X
         </button>
         <form>

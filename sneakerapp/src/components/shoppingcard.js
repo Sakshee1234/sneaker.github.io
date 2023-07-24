@@ -15,7 +15,9 @@ export default function Shoppingcard(props){
     const handleProductClick = () => {
         navigate(`/ProductDetails/${props.data.title}`);
     };
-
+    const handleBuyNowClick=()=>{
+        navigate('/checkoutform')
+    }
     return (
         <>
             <div className="shoppingcard">
@@ -46,8 +48,8 @@ export default function Shoppingcard(props){
                 </div>
 
                 <div className="shoppingcard--buy">
-                    <button onClick={()=>props.addToCart(props.data.title)} disabled={props.data.cart}>Add to cart</button>
-                    <button onClick={props.toggleForm}>buy now</button>
+                    <button onClick={()=>props.addToCart(props.data.title)} disabled={props.data.cart}>{!props.data.cart?"Add to cart":<span className="shoppingcard--addedToCart">Added &nbsp;<i className="fa-solid fa-check afterBuyTick"></i></span>}</button>
+                    <button onClick={()=>handleBuyNowClick()}>buy now</button>
                 </div>
             </div>
         </>

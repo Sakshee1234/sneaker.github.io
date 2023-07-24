@@ -8,7 +8,6 @@ import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
 import img from "./images/img.png"
 import Checkout from './components/checkoutform';
 import Cart from './components/Cart';
-import Wishlist from './components/Wishlist';
 import Carousel from './components/Carousel';
 
 const data=[
@@ -92,6 +91,8 @@ const data=[
   const [cart,setCart]=React.useState([]);
 
   function addToCart(title){
+    console.log(title);
+    console.log(cart);
     BLAZER.map(function(data){
       if(data.title===title){
         setCart(prevCart=>{
@@ -179,16 +180,6 @@ const data=[
           </div>
           <img src={img} className="footimage"/>
           <Footer/>
-          {/* <Cart
-            cart={cart}
-            emptyCart={emptyCart} 
-            addItemQuantity={addItemQuantity}
-            subItemQuantity={subItemQuantity}
-            removeItem={removeItem}
-          /> */}
-          {/* <Wishlist
-            addToCart={addToCart}
-          /> */}
         </div>
       }
       {displayForm && <div className='checkoutform' >

@@ -70,7 +70,9 @@ export default function Checkoutform(props) {
           <h4>Not yet registered? <a className="registerform--toggle" onClick={handleRegisterClick}>Register here</a></h4>
           <br />
           {errorMessage && <p className="error">{errorMessage}</p>}
-          <button className="registerform--onsubmit">Login</button>
+          <div className="resgisterform--onsubmit-container">
+            <button className="registerform--onsubmit">Login</button>
+          </div>
         </form>
       </div>
       <div>

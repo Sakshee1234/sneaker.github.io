@@ -136,7 +136,9 @@ export default function Checkoutform(props) {
           <br />
           {errorMessage && <p className="error">{errorMessage}</p>}
           {passwordMatch && <p>Passwords do not match</p>}  
-          <button className="registerform--onsubmit">Register</button>
+          <div className="resgisterform--onsubmit-container">
+            <button className="registerform--onsubmit">Register</button>
+          </div>
           </div>
         </form>
       </div>

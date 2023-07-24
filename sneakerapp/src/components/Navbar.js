@@ -26,7 +26,12 @@ export default function Navbar(props) {
     const handleAccountClick = () => {
         navigate('/Account');
     }
-    
+    const handleCartClick = () => {
+        navigate('/Cart');
+    }
+    const handleWishlistClick = () => {
+        navigate('/Wishlist');
+    }
     return (
         <>
             <nav>
@@ -39,8 +44,8 @@ export default function Navbar(props) {
                         </span>
                     </div>
                     <div className="nav--cart">
-                    <Link to="/Cart"><i className="fa-duotone fa-shopping-cart fa nav--cart-icon"></i></Link>
-                    <Link to="/Wishlist"><i className="fa-duotone fa-heart fa nav--wishlist"></i></Link>
+                    <i className="fa-duotone fa-shopping-cart fa nav--cart-icon" onClick={handleCartClick}></i>
+                    <i className="fa-duotone fa-heart fa nav--wishlist" onClick={handleWishlistClick}></i>
                     </div>
                 </div>
                 <div className='nav--secondline'>

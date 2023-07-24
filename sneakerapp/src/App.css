@@ -1,6 +1,6 @@
 .App{
   position:absolute;
-  background-color: beige;
+  background-color: white;
 }
 .checkoutform{
   background-color: white;
@@ -174,7 +174,7 @@ i{
 
 /* Product Details */
 .product-details{
-  background-color: beige;
+  background-color: white;
 }
 .product-details--title{
   color: #1b2741;
@@ -275,7 +275,7 @@ i{
 
 .about {
   padding: 5rem 3rem 3rem 3rem;
-  background: beige;
+  background: white;
 }
 
 .row {
@@ -456,13 +456,16 @@ i{
   padding:4%; */
 /* } */
 .wishlist {
-  padding: 2%;
-  background-color:beige;
-  border: 1px solid #ddd;
+  background-color:white;
   border-radius: 5px;
   /* margin-bottom: 20px; */
 }
-
+.wishlist--border{
+  border:1px solid black;
+  border-radius: 5px;
+  margin:2%;
+  padding: 1%;
+}
 .wishlist--items{
   display: flex;
   flex-direction: row;
@@ -657,14 +660,13 @@ i{
 .salescards{
   display:flex;
   flex-wrap:wrap;
-  margin:auto;
-  justify-content: center;
+  justify-content: left;
 }
 .shoppingcard{
   position:relative;
   width: 200px;
   height: 100%;
-  margin: 2%;
+  margin: 2.5%;
   box-shadow: 0 5px 20px rgba(0,0,0,.3);
   display:flex;
   flex-direction:column;
@@ -761,7 +763,7 @@ i{
 }
 
 .checkout-form {
-  background-color: beige;
+  background-color: white;
   margin: 2%;
   padding: 2rem;
   border: 1px solid #ddd;
@@ -887,15 +889,19 @@ input[type="text"] {
 
 /* cart */
 /* .cart--container{
-  padding: 4%; */
-/* } */
+  min-height: 500px;
+} */
 .cart {
   padding: 20px;
-  background-color: beige;
-  border: 1px solid #ddd;
+  background-color: white;
   border-radius: 5px;
-  margin-bottom: 20px;
   
+}
+.cart--border{
+  border:1px solid black;
+  border-radius: 5px;
+  margin:2%;
+  padding: 1%;
 }
 
 .cart--items{
@@ -982,6 +988,7 @@ input[type="text"] {
   padding-bottom:2%;
 }
 .registerform form{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   border:1px solid black;
   padding:2%;
   border-radius:2%;
@@ -999,6 +1006,7 @@ input[type="text"] {
   background-color: black;
   color:white;
   font-size:15px;
+
 }
 .registerform--onsubmit button{
   display:flex;
@@ -1008,7 +1016,10 @@ input[type="text"] {
 .registerform--onsubmit:hover{
   background-color:grey;
 }
-
+.resgisterform--onsubmit-container{
+  display:flex;
+  justify-content: center;
+}
 .registerform--toggle{
   color:blue;
   /* text-decoration: underline; */
@@ -1047,7 +1058,7 @@ input[type="number"] {
 } 
 
 .order-details-card {
-  background-color: beige;
+  background-color: white;
   border:1px solid black;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1077,4 +1088,3 @@ input[type="number"] {
   display:flex;
   justify-content: center;
 }
-

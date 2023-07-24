@@ -37,10 +37,8 @@ export default function Wishlist(props){
 
     return (
         <div className="wishlist--container">
-<<<<<<< HEAD
-=======
             <Navbar/>
->>>>>>> 4328e655bcc07bfe070fa12ddff65509babc8e70
+        <div className="wishlist--border">
           <div className="wishlist">
             <h1 className="wishlist--titlesymbol">❤️</h1>
             <h1 className="wishlist--title">My Wishlist </h1> 
@@ -62,6 +60,7 @@ export default function Wishlist(props){
                 </div>
               </span>
             ))}
+            </div>
           </div>
           <Footer/>
         </div>

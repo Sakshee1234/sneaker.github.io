@@ -13,148 +13,205 @@ import Account from './components/Account';
 import Account1 from './components/Account1';
 import OrderDetails from './components/OrderDetails';
 import About from './components/About';
-
+import Card from './components/Card';
+import Checkout from './components/checkoutform';
+import Navbar from './components/Navbar';
+import Carousel from './components/Carousel';
+import img from "./images/img.png"
+const data=[
+  {
+      icon:"fa-solid fa-truck-fast",
+      title: "FREE SHIPPING",
+      description: "Free worldwide shipping on all orders.",
+  }
+  ,
+  {
+      icon:"fa-duotone fa-box fa",
+      title:"30 DAYS RETURN",
+      description:"No question return and easy refund in 14 day's."
+  },
+  {
+      icon:"fa-regular fa-paper-plane",
+      title:"CONTACT US",
+      description:"Keep in touch via email and support system."
+  }
+]
 const App = () => {
-  const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
-  function addOrRemovefromWishlist(title){
-    setWishlist(BLAZER.map((data)=>{
-      return data.title===title?data.wishlist=!data.wishlist:data;
-    }))
-    setWishlist(CRATER.map((data)=>{
-      return data.title===title?data.wishlist=!data.wishlist:data;
-    }))
-    setWishlist(JORDAN.map((data)=>{
-      return data.title===title?data.wishlist=!data.wishlist:data;
-    }))
-    setWishlist(HIPPIE.map((data)=>{
-      return data.title===title?data.wishlist=!data.wishlist:data;
-    }))
-    setWishlist(AIRFORCE.map((data)=>{
-      return data.title===title?data.wishlist=!data.wishlist:data;
-    }))
-  }
-  
-  const [cart,setCart]=React.useState([]);
+  const cards=data.map(function(data){
+    return(
+      <Card
+        cards={data}
+      />
+    )
+})
 
-  function addToCart(title){
-    BLAZER.map(function(data){
-      if(data.title===title){
-        setCart(prevCart=>{
-          return [...prevCart,data];
-        })
-      }
-    })
+const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
+function addOrRemovefromWishlist(title){
+  setWishlist(BLAZER.map((data)=>{
+    return data.title===title?data.wishlist=!data.wishlist:data;
+  }))
+  setWishlist(CRATER.map((data)=>{
+    return data.title===title?data.wishlist=!data.wishlist:data;
+  }))
+  setWishlist(JORDAN.map((data)=>{
+    return data.title===title?data.wishlist=!data.wishlist:data;
+  }))
+  setWishlist(HIPPIE.map((data)=>{
+    return data.title===title?data.wishlist=!data.wishlist:data;
+  }))
+  setWishlist(AIRFORCE.map((data)=>{
+    return data.title===title?data.wishlist=!data.wishlist:data;
+  }))
+}
+const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
+function changeTab(str){
+  if(str==="BLAZER")
+  setShoppingcard(BLAZER);
+  else if(str==="AIRFORCE")
+  setShoppingcard(AIRFORCE);
+  else if(str==="JORDAN")
+  setShoppingcard(JORDAN);
+  else if(str==="CRATER")
+  setShoppingcard(CRATER);
+  else if(str==="HIPPIE")
+  setShoppingcard(HIPPIE);
+}
 
-    AIRFORCE.map(function(data){
-      if(data.title===title){
-        setCart(prevCart=>{
-          return [...prevCart,data];
-        })
-      }
-    })
+const shoppingcards=shoppingcard.map(function(data){
+  return(
+    <Shoppingcard
+    data={data}
+    toggleForm={toggleForm}
+    addToCart={addToCart}
+    addOrRemovefromWishlist={addOrRemovefromWishlist}
+  />
 
-    JORDAN.map(function(data){
-      if(data.title===title){
-        setCart(prevCart=>{
-          return [...prevCart,data];
-        })
-      }
-    })
+  )
+})
 
-    CRATER.map(function(data){
-      if(data.title===title){
-        setCart(prevCart=>{
-          return [...prevCart,data];
-        })
-      }
-    })
+const [displayForm,setDisplayForm]=React.useState(false);
 
-    HIPPIE.map(function(data){
-      if(data.title===title){
-        setCart(prevCart=>{
-          return [...prevCart,data];
-        })
-      }
-    })
-  }
 
-  function addItemQuantity(title){
-    setCart(prevCart=>{
-      return prevCart.map((data)=>{
-        return data.title===title?{...data,qty:data.qty+1}:data;
+function toggleForm(){
+  setDisplayForm(prevDisplayForm=>!prevDisplayForm)
+}
+
+const [cart,setCart]=React.useState([]);
+
+function addToCart(title){
+  console.log(title);
+  console.log(cart);
+  BLAZER.map(function(data){
+    if(data.title===title){
+      setCart(prevCart=>{
+        return [...prevCart,data];
       })
-    })
-  }
+    }
+  })
 
-  function subItemQuantity(title){
-    setCart(prevCart=>{
-      return prevCart.map((data)=>{
-        return data.title===title?{...data,qty:(data.qty>1?data.qty-1:data.qty)}:data;
+  AIRFORCE.map(function(data){
+    if(data.title===title){
+      setCart(prevCart=>{
+        return [...prevCart,data];
       })
-    })
-  }
-  
-  function emptyCart(){
-    setCart([]);
-  }
-  function removeItem(title){
-    setCart(prevCart=>{
-      return prevCart.filter((data)=>{
-        return data.title!==title;
+    }
+  })
+
+  JORDAN.map(function(data){
+    if(data.title===title){
+      setCart(prevCart=>{
+        return [...prevCart,data];
       })
+    }
+  })
+
+  CRATER.map(function(data){
+    if(data.title===title){
+      setCart(prevCart=>{
+        return [...prevCart,data];
+      })
+    }
+  })
+
+  HIPPIE.map(function(data){
+    if(data.title===title){
+      setCart(prevCart=>{
+        return [...prevCart,data];
+      })
+    }
+  })
+}
+
+function addItemQuantity(title){
+  setCart(prevCart=>{
+    return prevCart.map((data)=>{
+      return data.title===title?{...data,qty:data.qty+1}:data;
     })
-  }
+  })
+}
+
+function subItemQuantity(title){
+  setCart(prevCart=>{
+    return prevCart.map((data)=>{
+      return data.title===title?{...data,qty:(data.qty>1?data.qty-1:data.qty)}:data;
+    })
+  })
+}
+
+function emptyCart(){
+  setCart([]);
+}
+function removeItem(title){
+  setCart(prevCart=>{
+    return prevCart.filter((data)=>{
+      return data.title!==title;
+    })
+  })
+}
+
 
   return (
-<<<<<<< HEAD
-    
-    <>
-      {
-        !displayForm && <div className="App">
-          <Firstpage/>
-          {/* <Navbar
-          changeTab={changeTab}
-          />
-          <div className="salescards">
-            {shoppingcards}
-          </div>
-          <div className="cardsthree">
-            {cards}    
-          </div>
-          <img src={img} className="footimage"/>
-          <Footer/>
-          <Cart
-=======
     <Router>
       {/* <Navbar/> */}
       <Routes>
         <Route path="/" element={<Firstpage />} />
-        <Route path='/App1' element={<App1/>}/>
+        <Route path='/App1' element={
+          <>
+          {
+            !displayForm && <div className="App">
+              <Navbar
+              changeTab={changeTab}
+              />
+              <div className='carousel'>
+                <Carousel/>
+              </div>
+              <div className="salescards">
+                {shoppingcards}
+              </div>
+              <div className="cardsthree">
+                {cards}    
+              </div>
+              <img src={img} className="footimage"/>
+              <Footer/>
+            </div>
+          }
+          {displayForm && <div className='checkoutform' >
+              <Checkout
+                toggleForm={toggleForm}
+              />
+          </div>}
+        </>
+        }/>
         <Route path='/About' element={<About/>}/>
         <Route path='/OrderDetails' element={<OrderDetails/>}/>
         <Route path='/Account' element={<Account/>}/>
         <Route path='/Account1' element={<Account1/>}/>
         <Route path='/Cart' element={<Cart
->>>>>>> 4328e655bcc07bfe070fa12ddff65509babc8e70
             cart={cart}
             emptyCart={emptyCart} 
             addItemQuantity={addItemQuantity}
             subItemQuantity={subItemQuantity}
             removeItem={removeItem}
-<<<<<<< HEAD
-          />
-          <Wishlist
-            addToCart={addToCart}
-          /> */}
-        </div>
-      }
-      {displayForm && <div className='checkoutform' >
-          <Checkout
-            toggleForm={toggleForm}
-          />
-      </div>}
-    </>
-=======
             addOrRemovefromWishlist={addOrRemovefromWishlist}
           />}/>
         <Route path='/Wishlist' element={<Wishlist
@@ -165,7 +222,6 @@ const App = () => {
       </Routes>
       {/* <Footer/> */}
     </Router>
->>>>>>> 4328e655bcc07bfe070fa12ddff65509babc8e70
   );
 };
 

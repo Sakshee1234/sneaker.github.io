@@ -42,7 +42,6 @@ export default function Cart(props) {
             </div>
           </span>
         ))}
-        <hr/>
         <div className='cart--footer'>
           <p className="cart--footer-totalPrice">Total: ${totalPrice}</p>
           <button onClick={()=>props.emptyCart()}>Empty Cart</button>

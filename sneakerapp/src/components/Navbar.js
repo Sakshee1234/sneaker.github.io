@@ -44,8 +44,8 @@ export default function Navbar(props) {
                         </span>
                     </div>
                     <div className="nav--cart">
-                    <i className="fa-duotone fa-shopping-cart fa nav--cart-icon" onClick={handleCartClick}></i>
-                    <i className="fa-duotone fa-heart fa nav--wishlist" onClick={handleWishlistClick}></i>
+                        <i className="fa-duotone fa-shopping-cart fa nav--cart-icon" onClick={handleCartClick}></i>
+                        <i className="fa-duotone fa-heart fa nav--wishlist" onClick={handleWishlistClick}></i>
                     </div>
                 </div>
                 <div className='nav--secondline'>

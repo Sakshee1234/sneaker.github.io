@@ -37,137 +37,169 @@ const data=[
   }
 ]
 const App = () => {
-  const cards=data.map(function(data){
+    const cards=data.map(function(data){
+      return(
+        <Card
+          cards={data}
+        />
+      )
+  })
+
+  const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
+
+  function addOrRemovefromWishlist(title){
+    console.log(title);
+    setWishlist(BLAZER.map((data)=>{
+      return data.title===title?[...data,data.wishlist=!data.wishlist]:data;
+    }))
+    setWishlist(CRATER.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(JORDAN.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(HIPPIE.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+    setWishlist(AIRFORCE.map((data)=>{
+      return data.title===title?data.wishlist=!data.wishlist:data;
+    }))
+  }
+  const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
+  function changeTab(str){
+    if(str==="BLAZER")
+    setShoppingcard(BLAZER);
+    else if(str==="AIRFORCE")
+    setShoppingcard(AIRFORCE);
+    else if(str==="JORDAN")
+    setShoppingcard(JORDAN);
+    else if(str==="CRATER")
+    setShoppingcard(CRATER);
+    else if(str==="HIPPIE")
+    setShoppingcard(HIPPIE);
+  }
+
+  const shoppingcards=shoppingcard.map(function(data){
     return(
-      <Card
-        cards={data}
-      />
+      <Shoppingcard
+      data={data}
+      toggleForm={toggleForm}
+      addToCart={addToCart}
+      addOrRemovefromWishlist={addOrRemovefromWishlist}
+    />
     )
-})
-
-const [wishlist,setWishlist]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
-function addOrRemovefromWishlist(title){
-  setWishlist(BLAZER.map((data)=>{
-    return data.title===title?data.wishlist=!data.wishlist:data;
-  }))
-  setWishlist(CRATER.map((data)=>{
-    return data.title===title?data.wishlist=!data.wishlist:data;
-  }))
-  setWishlist(JORDAN.map((data)=>{
-    return data.title===title?data.wishlist=!data.wishlist:data;
-  }))
-  setWishlist(HIPPIE.map((data)=>{
-    return data.title===title?data.wishlist=!data.wishlist:data;
-  }))
-  setWishlist(AIRFORCE.map((data)=>{
-    return data.title===title?data.wishlist=!data.wishlist:data;
-  }))
-}
-const [shoppingcard,setShoppingcard]=React.useState(AIRFORCE);
-function changeTab(str){
-  if(str==="BLAZER")
-  setShoppingcard(BLAZER);
-  else if(str==="AIRFORCE")
-  setShoppingcard(AIRFORCE);
-  else if(str==="JORDAN")
-  setShoppingcard(JORDAN);
-  else if(str==="CRATER")
-  setShoppingcard(CRATER);
-  else if(str==="HIPPIE")
-  setShoppingcard(HIPPIE);
-}
-
-const shoppingcards=shoppingcard.map(function(data){
-  return(
-    <Shoppingcard
-    data={data}
-    toggleForm={toggleForm}
-    addToCart={addToCart}
-    addOrRemovefromWishlist={addOrRemovefromWishlist}
-  />
-
-  )
-})
-
-const [displayForm,setDisplayForm]=React.useState(false);
-
-
-function toggleForm(){
-  setDisplayForm(prevDisplayForm=>!prevDisplayForm)
-}
-
-const [cart,setCart]=React.useState([]);
-
-function addToCart(title){
-  console.log(title);
-  console.log(cart);
-  BLAZER.map(function(data){
-    if(data.title===title){
-      setCart(prevCart=>{
-        return [...prevCart,data];
-      })
-    }
   })
 
-  AIRFORCE.map(function(data){
-    if(data.title===title){
-      setCart(prevCart=>{
-        return [...prevCart,data];
-      })
-    }
-  })
+  const [displayForm,setDisplayForm]=React.useState(false);
 
-  JORDAN.map(function(data){
-    if(data.title===title){
-      setCart(prevCart=>{
-        return [...prevCart,data];
-      })
-    }
-  })
 
-  CRATER.map(function(data){
-    if(data.title===title){
-      setCart(prevCart=>{
-        return [...prevCart,data];
-      })
-    }
-  })
+  function toggleForm(){
+    setDisplayForm(prevDisplayForm=>!prevDisplayForm)
+  }
 
-  HIPPIE.map(function(data){
-    if(data.title===title){
-      setCart(prevCart=>{
-        return [...prevCart,data];
-      })
-    }
-  })
-}
+  const [cart,setCart]=React.useState([]);
+  const [cartbtn,setCartbtn]=React.useState({BLAZER,CRATER,JORDAN,HIPPIE,AIRFORCE});
 
-function addItemQuantity(title){
-  setCart(prevCart=>{
-    return prevCart.map((data)=>{
-      return data.title===title?{...data,qty:data.qty+1}:data;
+  function addToCart(title){
+    BLAZER.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
     })
-  })
-}
 
-function subItemQuantity(title){
-  setCart(prevCart=>{
-    return prevCart.map((data)=>{
-      return data.title===title?{...data,qty:(data.qty>1?data.qty-1:data.qty)}:data;
+    AIRFORCE.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
     })
-  })
-}
 
-function emptyCart(){
-  setCart([]);
-}
-function removeItem(title){
-  setCart(prevCart=>{
-    return prevCart.filter((data)=>{
-      return data.title!==title;
+    JORDAN.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+
+      }
     })
-  })
-}
+
+    CRATER.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+
+    HIPPIE.map(function(data){
+      if(data.title===title){
+        setCart(prevCart=>{
+          return [...prevCart,data];
+        })
+      }
+    })
+    setCartbtn(BLAZER.map((data)=>{
+      return data.title===title?data.cart=true:data;
+    }))
+    setCartbtn(CRATER.map((data)=>{
+      return data.title===title?data.cart=true:data;
+    }))
+    setCartbtn(JORDAN.map((data)=>{
+      return data.title===title?data.cart=true:data;
+    }))
+    setCartbtn(AIRFORCE.map((data)=>{
+      return data.title===title?data.cart=true:data;
+    }))
+    setCartbtn(HIPPIE.map((data)=>{
+      return data.title===title?data.cart=true:data;
+    }))
+  }
+
+
+  function addItemQuantity(title){
+    setCart(prevCart=>{
+      return prevCart.map((data)=>{
+        return data.title===title?{...data,qty:data.qty+1}:data;
+      })
+    })
+  }
+
+  function subItemQuantity(title){
+    setCart(prevCart=>{
+      return prevCart.map((data)=>{
+        return data.title===title?{...data,qty:(data.qty>1?data.qty-1:data.qty)}:data;
+      })
+    })
+  }
+
+  function emptyCart(){
+    setCart([]);
+  }
+  function removeItem(title){
+    setCart(prevCart=>{
+      return prevCart.filter((data)=>{
+        return data.title!==title;
+      })
+    })
+    setCartbtn(BLAZER.map((data)=>{
+      return data.title===title?data.cart=false:data;
+    }))
+    setCartbtn(CRATER.map((data)=>{
+      return data.title===title?data.cart=false:data;
+    }))
+    setCartbtn(JORDAN.map((data)=>{
+      return data.title===title?data.cart=false:data;
+    }))
+    setCartbtn(AIRFORCE.map((data)=>{
+      return data.title===title?data.cart=false:data;
+    }))
+    setCartbtn(HIPPIE.map((data)=>{
+      return data.title===title?data.cart=false:data;
+    }))
+  }
 
 
   return (
@@ -202,8 +234,8 @@ function removeItem(title){
           </div>}
         </>
         }/>
-        <Route path='/About' element={<About/>}/>
-        <Route path='/OrderDetails' element={<OrderDetails/>}/>
+        <Route path='/About' element={<About />}/>
+        <Route path='/OrderDetails' element={<OrderDetails />}/>
         <Route path='/Account' element={<Account/>}/>
         <Route path='/Account1' element={<Account1/>}/>
         <Route path='/Cart' element={<Cart
@@ -212,7 +244,6 @@ function removeItem(title){
             addItemQuantity={addItemQuantity}
             subItemQuantity={subItemQuantity}
             removeItem={removeItem}
-            addOrRemovefromWishlist={addOrRemovefromWishlist}
           />}/>
         <Route path='/Wishlist' element={<Wishlist
             addToCart={addToCart}
@@ -220,7 +251,6 @@ function removeItem(title){
           <Route path='/Footer' element={<Footer/>}/>
           <Route path='/ProductDetails/:title' element={<ProductDetails/>}/>
       </Routes>
-      {/* <Footer/> */}
     </Router>
   );
 };

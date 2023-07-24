@@ -2,15 +2,9 @@ import React from "react"
 import { useNavigate } from "react-router-dom";
 export default function Shoppingcard(props){
 
-    const [wishlist,setWishlist]=React.useState(props.data.wishlist);
     const wishliststyle={
-        color:wishlist?"red":"grey"
+        color:props.data.wishlist?"red":"grey"
     }
-
-    function addOrRemovefromWishlist(){
-        setWishlist(prevwishlist=> !prevwishlist);
-    }
-
     const styleOrange={
         color:"orange"
     }
@@ -29,7 +23,7 @@ export default function Shoppingcard(props){
                     <img src={props.data.image}/>
                 </div>
                 <div className="shoppingcard--icons">
-                    <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={addOrRemovefromWishlist}></i>
+                    <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={()=>props.addOrRemovefromWishlist(props.data.title)}></i>
                 </div>
                 
                 <div className="shoppingcard--price">
@@ -52,7 +46,7 @@ export default function Shoppingcard(props){
                 </div>
 
                 <div className="shoppingcard--buy">
-                    <button onClick={()=>props.addToCart(props.data.title)}>Add to cart</button>
+                    <button onClick={()=>props.addToCart(props.data.title)} disabled={props.data.cart}>Add to cart</button>
                     <button onClick={props.toggleForm}>buy now</button>
                 </div>
             </div>

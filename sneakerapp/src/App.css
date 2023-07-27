@@ -173,6 +173,28 @@ nav{
 i{
   margin-right:5%;
 }
+/* ShoeSizeDropdown */
+.shoe-size-dropdown {
+  padding: 1% 4%;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+p {
+  margin-top: 10px;
+}
 
 /* Product Details */
 .product-details{
@@ -602,6 +624,180 @@ i{
 .footimage{
   width:100%;
   height:100%;
+}
+
+/* Categories */
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-heading {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.product-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Example hover effect - you can customize this */
+  transform: translateY(-2px); /* Example hover effect - you can customize this */
+  background-color: #d8dce7;
+}
+
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h3{
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-info p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.product-info .product-price {
+  margin-top: 5px;
+  color: #48b855;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.star-rating {
+  display: flex;
+}
+
+.star {
+  font-size: 18px;
+  color: #ff9800;
+  margin-right: 2px;
+}
+
+.des{
+  color: #999;
+}
+
+/* Styling for the "Latest Products" section */
+.latest-products {
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.latest-products .section-heading {
+  color: #333;
+}
+
+
+.latest-products h2.section-heading::after {
+  content: "";
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.latest-products .product-image {
+  border: 1px solid #ffffff;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Styling for the "New Arrivals" section */
+.new-arrivals {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.new-arrivals .section-heading {
+  color: #010910;
+}
+
+.new-arrivals h2.section-heading::after {
+  content: "";
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+/*
+.new-arrivals .product-item {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}  */
+
+.new-arrivals .product-image {
+  border: 1px solid #ddd;
+}
+
+/* Styling for the "Trending Products" section */
+.trending-products {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.trending-products .section-heading {
+  color: #0e0b0a;
+}
+/*
+.trending-products .product-item {
+  background-color: #ffffff;
+  border: 1px solid #f0e6d2;
+} */
+
+.trending-products h2.section-heading::after {
+  content: "";
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.trending-products .product-image {
+  border: 1px solid #ddd;
 }
 
 /* carousel */

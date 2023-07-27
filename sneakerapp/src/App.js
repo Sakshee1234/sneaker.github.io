@@ -20,6 +20,7 @@ import Carousel from './components/Carousel';
 import img from "./images/img.png"
 import DealofDay from './components/DealofDay';
 import Checkoutform from './components/checkoutform';
+import Categories from './components/Categories';
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -221,10 +222,11 @@ const App = () => {
               <div className="salescards">
                 {shoppingcards}
               </div>
+              <Categories/>
+              <DealofDay/>
               <div className="cardsthree">
                 {cards}    
               </div>
-              <DealofDay/>
               <img src={img} className="footimage"/>
               <Footer/>
             </div>

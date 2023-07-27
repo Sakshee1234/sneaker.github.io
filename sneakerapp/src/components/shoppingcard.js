@@ -22,7 +22,7 @@ export default function Shoppingcard(props){
         <>
             <div className="shoppingcard">
                 <div className="shoppingcard--image">
-                    <img src={props.data.image}/>
+                    <img src={props.data.image[0]}/>
                 </div>
                 <div className="shoppingcard--icons">
                     <i className="fa-duotone fa-heart fa shoppingcard--wishlist" style={wishliststyle} onClick={()=>props.addOrRemovefromWishlist(props.data.title)}></i>

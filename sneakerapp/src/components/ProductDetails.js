@@ -9,6 +9,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import App from "../App";
 import { useNavigate } from "react-router-dom";
+import './ShoeSizeDropdown';
+import ShoeSizeDropdown from "./ShoeSizeDropdown";
 
 export default function ProductDetails(props) {
   const { title } = useParams();
@@ -25,9 +27,6 @@ export default function ProductDetails(props) {
       color:"grey"
   }
   const [image,setImage]=React.useState(product.image[0]);
-  
-  // const [image, setImage] = React.useState(product ? product.image[0] : '');
-
   function changeImage(ind){
     console.log(ind+" "+product.image[ind])
     setImage(product.image[ind])
@@ -86,6 +85,8 @@ export default function ProductDetails(props) {
           {showFullText ? 'Read Less' : 'Read More'}
         </span>
       </div>
+      <hr/>
+      <ShoeSizeDropdown/>
       {/* </div> */}
       <hr/>
       <div className="product-details--price">

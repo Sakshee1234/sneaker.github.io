@@ -52,6 +52,46 @@ export default function Checkoutform(props) {
         setPasswordMatch("Passwords do not match");
         return;
     }
+    console.log(name, address, phone, email, password, cpassword);
+    fetch("http://localhost:3001/register", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        name,
+        address, 
+        phone,
+        email,
+        password,
+        cpassword,
+      }),
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error("Registration failed");
+      }
+    })
+    .then((data) => {
+      console.log(data, "userRegister");
+      if(data.status=="ok") {
+        alert("Registration Successful");
+        navigate("/");
+        }
+        else{
+          alert("User Already Exists");
+          navigate("/Account1");
+        }
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Something went wrong during registering");
+    });
 }
 
   // const handleChange = (event) => {

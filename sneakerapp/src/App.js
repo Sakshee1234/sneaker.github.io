@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Firstpage from './components/firstPage';
-// import App1 from './App1';
 import Cart from './components/Cart';
 import {AIRFORCE,JORDAN,CRATER,HIPPIE,BLAZER} from './shoppingcardsdata.js';
 import Shoppingcard from './components/shoppingcard';
@@ -14,13 +13,15 @@ import Account1 from './components/Account1';
 import OrderDetails from './components/OrderDetails';
 import About from './components/About';
 import Card from './components/Card';
-import Checkout from './components/checkoutform';
 import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
 import img from "./images/img.png"
 import DealofDay from './components/DealofDay';
 import Checkoutform from './components/checkoutform';
 import Categories from './components/Categories';
+// import AccountDetailsPage from './components/AccountDetailsPage';
+import AccountDetailsPage from './components/AccountDetailsPage';
+import Paymentoption from './components/Paymentoption';
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -203,6 +204,7 @@ const App = () => {
     }))
   }
 
+  const [authenticated, setAuthenticated] = useState(false);
 
   return (
     <Router>
@@ -234,9 +236,9 @@ const App = () => {
         </>
         }/>
         <Route path='/About' element={<About />}/>
-        <Route path='/OrderDetails' element={<OrderDetails />}/>
+        
         <Route path='/Account' element={<Account/>}/>
-        <Route path='/Account1' element={<Account1/>}/>
+        <Route path='/Account1' element={<Account1 setAuthenticated={setAuthenticated}/>}/>
         <Route path='/Cart' element={<Cart
             cart={cart}
             emptyCart={emptyCart} 
@@ -251,6 +253,9 @@ const App = () => {
           <Route path='/Footer' element={<Footer/>}/>
           <Route path='/ProductDetails/:title' element={<ProductDetails addToCart={addToCart} />} />
           <Route path='/checkoutform' element={<Checkoutform/>}/>
+          <Route path='/AccountDetailsPage' element={<AccountDetailsPage/>}/>
+          <Route path='/OrderDetails/:title' element={<OrderDetails />}/>
+          <Route path='/Paymentoption/:title' element={<Paymentoption/>}></Route>
       </Routes>
     </Router>
   );

@@ -860,7 +860,7 @@ p {
   position:relative;
   width: 200px;
   height: 100%;
-  margin: 4%;
+  margin: 3%;
   box-shadow: 0 5px 20px rgba(0,0,0,.3);
   display:flex;
   flex-direction:column;
@@ -1535,4 +1535,96 @@ input[type="number"] {
   display:flex;
   justify-content: center;
 }
+/* accountdetails */
 
+.accountcontent--container{
+  border:1px solid black;
+  margin:2%;
+  border-radius: 2%;
+  width:50%;
+  padding:2%;
+}
+.account{
+  display: flex;
+  justify-content: center;
+}
+.accountcontent{
+  padding:2%;
+}
+
+.accountcontent--textDiv{
+  display:flex;
+  justify-content:center;
+}
+.accountcontent--details1 h2{
+  display: flex;
+  justify-content: center;
+}
+
+.accountcontent--ondone{
+  width:200px;
+  height:35px;
+  background-color: black;
+  color:white;
+  font-size:15px;
+}
+.accountcontent--ondone button{
+  display:flex;
+  justify-content: center;
+
+}
+.accountcontent--ondone:hover{
+  background-color:grey;
+}
+.accountcontent--ondone-container{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* paymentoption */
+.paymentoption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.paymentoption--title{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+.payment--options {
+  border:1px solid black;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.payment--options h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.checkoutform--onsubmit {
+  width: 100%;
+  height: 40px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.checkoutform--onsubmit:hover {
+  background-color: grey;
+}

@@ -34,8 +34,8 @@ export default function Checkoutform(props) {
           X
         </button>
         <form>
-          <h2 className="checkoutform--title">Personal Information</h2>
-          <div className="form-group">
+          {/*<h2 className="checkoutform--title">Personal Information</h2>
+           <div className="form-group">
             <label htmlFor="fullName">Name Surname</label>
             <input
               type="text"
@@ -78,7 +78,7 @@ export default function Checkoutform(props) {
               name="address"
               value={formData.address}
             />
-          </div>
+          </div> */}
           <h2 className="checkoutform--title">Card Information</h2>
           <div className="card-details">
             <img

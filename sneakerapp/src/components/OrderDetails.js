@@ -1,16 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
+import { AIRFORCE,JORDAN,BLAZER,HIPPIE,CRATER } from '../shoppingcardsdata';
 function OrderDetails() {
   const navigate = useNavigate();
   const handleOrderClick = () => {
     navigate("/App1");
   }
+  const {title}=useParams();
+  const products = [...AIRFORCE, ...JORDAN, ...BLAZER, ...CRATER, ...HIPPIE];
+  const product = products.find((p) =>
+    p.title.toLowerCase() === title.toLowerCase()
+  );
+  
   const orderItems = [
     {
       id: 1,
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdQFGcFgRN-QiHxjRN07dUEBSpVJKZ9tUTC0tmFMq1T5H0v-RHB8D20CurM497aetNBuo&usqp=CAU", // Replace with the actual image URL
-      name: 'Mic',
+      name: title,
       price: 33,
       quantity: 2,
     },
@@ -38,27 +45,27 @@ function OrderDetails() {
           <p className="greenColor"><b>PAID</b></p>
 
           <h4 className="my-3">Order Status:</h4>
-          <p className="greenColor"><b>Delivered</b></p>
+          <p className="greenColor"><b>Shipped</b></p>
         </div>
 
         <hr />
 
         <h4 className="my-3">Order Items:</h4>
 
-        {orderItems.map((item) => (
-          <div key={item.id} className="cart-item my-1">
+        {/* {orderItems.map((item) => ( */}
+          <div key={product.id} className="cart-item my-1">
             <div className="row my-3">
               <div className="col-4 col-lg-2">
-                <img src={item.imageSrc} alt={item.name} height="60" width="60" />
+                <img src={product.image}  height="60" width="60" />
               </div>
 
               <div className="col-8 col-lg-10">
-                <a href="#">{item.name}</a>
-                <p>${item.price} - {item.quantity} Piece(s)</p>
+                <p>{product.title}</p>
+                <p>${product.price}</p>
               </div>
             </div>
           </div>
-        ))}
+        {/*)) } */}
 
         <hr />
 

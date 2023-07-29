@@ -124,7 +124,7 @@ const DealofDay = () => {
               </div>
               <div className="dealofday--details_container">
                 <div className="dealofday--montserrat-container">
-                <p className="dealofday--montserrat">.sneakerShack</p>
+                <p className="dealofday--montserrat">Deal of The Day</p>
                 </div>
                 <div className="dealofday--promo-text">
             <span className="dealofday--flat-off">Flat 50% OFF</span>

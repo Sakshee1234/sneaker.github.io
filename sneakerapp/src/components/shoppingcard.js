@@ -16,7 +16,7 @@ export default function Shoppingcard(props){
         navigate(`/ProductDetails/${props.data.title}`);
     };
     const handleBuyNowClick=()=>{
-        navigate('/checkoutform')
+        navigate(`/Paymentoption/${props.data.title}`)
     }
     return (
         <>

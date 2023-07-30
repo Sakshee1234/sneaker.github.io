@@ -40,7 +40,7 @@ export default function CheckoutformCart(props) {
   }
   const {title} = useParams();
   const handleOrderDetails = () => {
-    navigate(`/OrderDetails/${title}`);
+    navigate(`/OrderDetailsCart`);
   }
 
   const handleCloseClick=()=>{

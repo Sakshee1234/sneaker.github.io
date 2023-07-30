@@ -25,7 +25,9 @@ import OrderDetailsCart from './components/OrderDetailsCart';
 import Paymentupi from './components/Paymentupi';
 import PaymentOptionCart from './components/PaymentOptionCart';
 import PaymentUpiCart from './components/PaymentUpiCart';
-import CheckoutformCart from './components/CheckoutformCart';
+import CheckoutformCart from './components/checkoutformCart';
+import ConfirmOrderDetailsPage from './components/ConfirmOrderDetailsPage';
+import ThankYou from './components/ThankYou';
 
 const data=[
   {
@@ -268,6 +270,8 @@ const App = () => {
           <Route path='/PaymentOptionCart' element={<PaymentOptionCart/>}/>
           <Route path='/PaymentUpiCart' element={<PaymentUpiCart/>}/>
           <Route path='/CheckoutformCart' element={<CheckoutformCart/>}/>
+          <Route path='/ConfirmOrderDetailsPage' element={<ConfirmOrderDetailsPage/>}/>
+          <Route path='/ThankYou' element={<ThankYou/>}/>
       </Routes>
     </Router>
   );

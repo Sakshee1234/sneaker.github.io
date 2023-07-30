@@ -5,7 +5,7 @@ export default function OrderDetailsCart(props){
     const navigate = useNavigate();
 
     const handleOrderClick = () => {
-        navigate("/App1");
+        navigate("/ConfirmOrderDetailsPage");
     }
     // const { title } = useParams();
     // const products = [...AIRFORCE, ...JORDAN, ...BLAZER, ...CRATER, ...HIPPIE];
@@ -111,7 +111,7 @@ export default function OrderDetailsCart(props){
             <p className="delivery-date">{`${sixDaysLater.getDate()}-${sixDaysLater.getMonth() + 1}-${sixDaysLater.getFullYear()}`}</p>
         </div>
         <div className="order--btnContainer">
-            <button className='order--btn' onClick={handleOrderClick}>Done</button>
+            <button className='order--btn' onClick={handleOrderClick}>Confirm</button>
         </div>
         </div>
     )

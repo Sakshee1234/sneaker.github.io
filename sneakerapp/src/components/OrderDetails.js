@@ -6,7 +6,7 @@ import { AIRFORCE, JORDAN, BLAZER, HIPPIE, CRATER } from '../shoppingcardsdata';
 function OrderDetails() {
   const navigate = useNavigate();
   const handleOrderClick = () => {
-    navigate("/App1");
+    navigate("/ConfirmOrderDetailsPage");
   }
   const { title } = useParams();
   const products = [...AIRFORCE, ...JORDAN, ...BLAZER, ...CRATER, ...HIPPIE];
@@ -105,7 +105,7 @@ function OrderDetails() {
         <p className="delivery-date">{`${sixDaysLater.getDate()}-${sixDaysLater.getMonth() + 1}-${sixDaysLater.getFullYear()}`}</p>
       </div>
       <div className="order--btnContainer">
-        <button className='order--btn' onClick={handleOrderClick}>Done</button>
+        <button className='order--btn' onClick={handleOrderClick}>Confirm</button>
       </div>
     </div>
   );

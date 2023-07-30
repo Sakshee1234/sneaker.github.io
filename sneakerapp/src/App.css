@@ -1652,3 +1652,68 @@ input[type="number"] {
 .paymentupi--checkoutbtn{
   margin: 4%;
 }
+/* Confirm Details Page */
+.confirm--page {
+  max-width: 400px;
+  margin: 15% auto;
+  padding: 2%;
+  border: 10px solid black;
+  border-radius: 5px;
+  box-shadow: 40px 40px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm--page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.confirmpage--btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.confirmpage--btn button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirmpage--btn button:hover {
+  background-color: #f1f1f1;
+}
+
+.confirmpage--btn button:first-child {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.confirmpage--btn button:last-child {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.confirmpage--btn1{
+  display: flex;
+  margin: auto;
+}
+.confirmpage--btn1 button{
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.confirmpage--btn1 button:hover {
+  background-color: gray;
+}
+
+
+

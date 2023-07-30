@@ -16,6 +16,7 @@ const Firstpage = () => {
         width: width,
         height: height,
     };
+    
     const  navigate = useNavigate();
     const handleExploreClick = () => {
         navigate("/App1");

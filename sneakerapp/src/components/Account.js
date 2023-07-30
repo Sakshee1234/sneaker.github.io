@@ -81,7 +81,7 @@ export default function Checkoutform(props) {
       console.log(data, "userRegister");
       if(data.status=="ok") {
         alert("Registration Successful");
-        navigate("/");
+        navigate("/App1");
         }
         else{
           alert("User Already Exists");
@@ -93,13 +93,6 @@ export default function Checkoutform(props) {
       alert("Something went wrong during registering");
     });
 }
-
-  // const handleChange = (event) => {
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     [event.target.name]: event.target.value
-  //   }));
-  // };
 
   return (
     <div className="registerform--container">

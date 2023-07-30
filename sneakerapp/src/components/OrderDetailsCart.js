@@ -26,6 +26,7 @@ export default function OrderDetailsCart(props){
     props.cart.map((data) => (
         totalPrice+=(data.price*data.qty)
     ))
+    const formattedTotalPrice = parseFloat(totalPrice).toFixed(2);
     const fetchUserData = () => {
         const token = localStorage.getItem("token"); // Retrieve the token from localStorage
 
@@ -102,7 +103,7 @@ export default function OrderDetailsCart(props){
                 </div>
             ))}
             <div>
-                <b>Total Amount:</b>${totalPrice}
+                <b>Total Amount:</b>${formattedTotalPrice}
             </div>
             <hr />
 

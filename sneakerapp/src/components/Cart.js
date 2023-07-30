@@ -6,19 +6,22 @@ import { useNavigate } from 'react-router-dom';
 export default function Cart(props) {
   const navigate = useNavigate();
   var totalPrice=0;
+  
   props.cart.map((data) => (
     totalPrice+=(data.price*data.qty)
   ))
+  const formattedTotalPrice = parseFloat(totalPrice).toFixed(2);
   const handlebuyallClick = () => {
-    navigate(`/OrderDetailsCart`)
+    navigate(`/PaymentOptionCart`)
   }
+
   return (
     <div className='cart--container'>
       <Navbar/>
       <div className="cart--border">
       <div className="cart">
         <h1 className="cart--title">Cart</h1>  
-        {props.cart && props.cart.map((data) => (
+        {props.cart ? props.cart.map((data) => (
           <span key={data.id}>
             <div className='cart--items'>
                 <div className="cart--image">
@@ -44,19 +47,26 @@ export default function Cart(props) {
                     <button onClick={() => props.removeItem(data.title)}>Remove</button>
                 </div>
             </div>
-            <div className='cart--footer--buyallnow'>
-                <button  onClick={()=>handlebuyallClick()}>Buy Now</button>
-            </div>
-            <div className='cart--footer'>
-              <p className="cart--footer-totalPrice">Total: ${totalPrice}</p>
-              <button onClick={()=>props.emptyCart()}>Empty Cart</button>
-            </div>
           </span>
-        ))}
-        <hr/>
+        ))
+        :
         <div className='cart--footeremptycart'>
           <h2>Your Cart Is Empty</h2>
         </div>
+        }
+        {
+          props.cart.length>0 && 
+          <div>
+            <div className='cart--footer--buyallnow'>
+                <button  onClick={()=>handlebuyallClick()}>Buy Now</button>
+            </div>
+            <hr/>
+            <div className='cart--footer'>
+              <p className="cart--footer-totalPrice">Total: ${formattedTotalPrice}</p>
+              <button onClick={()=>props.emptyCart()}>Empty Cart</button>
+            </div>
+          </div>
+        }
       </div>
       </div>
       <Footer/>

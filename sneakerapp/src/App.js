@@ -19,11 +19,13 @@ import img from "./images/img.png"
 import DealofDay from './components/DealofDay';
 import Checkoutform from './components/checkoutform';
 import Categories from './components/Categories';
-// import AccountDetailsPage from './components/AccountDetailsPage';
 import AccountDetailsPage from './components/AccountDetailsPage';
 import Paymentoption from './components/Paymentoption';
 import OrderDetailsCart from './components/OrderDetailsCart';
 import Paymentupi from './components/Paymentupi';
+import PaymentOptionCart from './components/PaymentOptionCart';
+import PaymentUpiCart from './components/PaymentUpiCart';
+import CheckoutformCart from './components/CheckoutformCart';
 
 const data=[
   {
@@ -263,6 +265,9 @@ const App = () => {
           <Route path='/OrderDetails/:title' element={<OrderDetails />}/>
           <Route path='/Paymentoption/:title' element={<Paymentoption/>}/>
           <Route path='/Paymentupi/:title' element={<Paymentupi/>}/>
+          <Route path='/PaymentOptionCart' element={<PaymentOptionCart/>}/>
+          <Route path='/PaymentUpiCart' element={<PaymentUpiCart/>}/>
+          <Route path='/CheckoutformCart' element={<CheckoutformCart/>}/>
       </Routes>
     </Router>
   );

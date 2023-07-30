@@ -1,13 +1,13 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
 import { useNavigate, useParams } from 'react-router-dom';
-const Paymentupi = () => {
+const PaymentUpiCart = () => {
   // You can use a static string as the value or leave it empty for a blank QR code
   const navigate = useNavigate();
   const qrCodeValue = '';
   const {title} = useParams();
   const handleOrderDetails = () => {
-    navigate(`/OrderDetails/${title}`);
+    navigate(`/OrderDetailsCart`);
   }
 
   return (
@@ -24,4 +24,4 @@ const Paymentupi = () => {
   );
 };
 
-export default Paymentupi;
+export default PaymentUpiCart;

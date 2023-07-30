@@ -9,8 +9,12 @@ export default function Paymentoption(props) {
   
   const handleOrderDetails = () => {
     if (selectedOption === "Card") {
-      navigate("/Checkoutform");
-    } else {
+      navigate(`/Checkoutform/${title}`);
+    }
+    else if (selectedOption === "UPI"){
+      navigate(`/Paymentupi/${title}`);
+    } 
+    else {
       navigate(`/OrderDetails/${title}`);
     }
   }

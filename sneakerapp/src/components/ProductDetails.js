@@ -37,9 +37,11 @@ export default function ProductDetails(props) {
     setShowFullText(!showFullText);
   };
   const navigate = useNavigate();
-  const handleBuyNowClick=()=>{
-    navigate('/checkoutform')
+  
+  const handleBuyNowClick = () => {
+      navigate(`/Paymentoption/${title}`);
   }
+
   if (!product) {
     return <div>Product not found.</div>;
   }

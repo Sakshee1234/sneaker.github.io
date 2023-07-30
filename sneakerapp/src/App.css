@@ -868,6 +868,7 @@ p {
   border-radius:10px;
   transition: .3s; 
 }
+
 .afterBuyTick{
   color:white;
 }
@@ -1416,7 +1417,14 @@ margin-top: 10px;
 .cart--footer-totalPrice{
   margin:4px;
 }
-
+.cart--footer--buyallnow{
+  display: flex;
+  justify-content: center;
+}
+.cart--footeremptycart{
+  display: flex;
+  justify-content: center;
+}
 /* account */
 
 .registerform--container{
@@ -1627,4 +1635,20 @@ input[type="number"] {
 
 .checkoutform--onsubmit:hover {
   background-color: grey;
+}
+
+/* paymentupi */
+.paymentupi{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+.paymentupi--container{
+  border:1px solid black;
+  margin:2%;
+  width:50%;
+  border-radius: 2%;
+}
+.paymentupi--checkoutbtn{
+  margin: 4%;
 }

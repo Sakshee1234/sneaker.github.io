@@ -22,6 +22,9 @@ import Categories from './components/Categories';
 // import AccountDetailsPage from './components/AccountDetailsPage';
 import AccountDetailsPage from './components/AccountDetailsPage';
 import Paymentoption from './components/Paymentoption';
+import OrderDetailsCart from './components/OrderDetailsCart';
+import Paymentupi from './components/Paymentupi';
+
 const data=[
   {
       icon:"fa-solid fa-truck-fast",
@@ -252,10 +255,14 @@ const App = () => {
           />}/>
           <Route path='/Footer' element={<Footer/>}/>
           <Route path='/ProductDetails/:title' element={<ProductDetails addToCart={addToCart} />} />
-          <Route path='/checkoutform' element={<Checkoutform/>}/>
+          <Route path='/Checkoutform/:title' element={<Checkoutform/>}/>
+          <Route path='/OrderDetailsCart' element={<OrderDetailsCart
+            cart={cart}
+          />}/>
           <Route path='/AccountDetailsPage' element={<AccountDetailsPage/>}/>
           <Route path='/OrderDetails/:title' element={<OrderDetails />}/>
-          <Route path='/Paymentoption/:title' element={<Paymentoption/>}></Route>
+          <Route path='/Paymentoption/:title' element={<Paymentoption/>}/>
+          <Route path='/Paymentupi/:title' element={<Paymentupi/>}/>
       </Routes>
     </Router>
   );

@@ -1,41 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { AIRFORCE,JORDAN,BLAZER,HIPPIE,CRATER } from '../shoppingcardsdata';
+import { AIRFORCE, JORDAN, BLAZER, HIPPIE, CRATER } from '../shoppingcardsdata';
+
 function OrderDetails() {
   const navigate = useNavigate();
   const handleOrderClick = () => {
     navigate("/App1");
   }
-  const {title}=useParams();
+  const { title } = useParams();
   const products = [...AIRFORCE, ...JORDAN, ...BLAZER, ...CRATER, ...HIPPIE];
   const product = products.find((p) =>
     p.title.toLowerCase() === title.toLowerCase()
   );
-  
-  const orderItems = [
-    {
-      id: 1,
-      imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdQFGcFgRN-QiHxjRN07dUEBSpVJKZ9tUTC0tmFMq1T5H0v-RHB8D20CurM497aetNBuo&usqp=CAU", // Replace with the actual image URL
-      name: title,
-      price: 33,
-      quantity: 2,
-    },
-  ];
+
   const today = new Date();
   const sixDaysLater = new Date(today);
   sixDaysLater.setDate(today.getDate() + 6);
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = () => {
+    const token = localStorage.getItem("token"); // Retrieve the token from localStorage
+
+    fetch("http://localhost:3001/userdata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      })
+      .then((data) => {
+        if (data.status === "ok") {
+          setUserData(data.data); // Store the fetched user data in state
+        } else {
+          throw new Error("User not found");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Something went wrong while fetching user data");
+      });
+  };
 
   return (
     <div className="order--container">
       <div className="order-details-card">
         <h1 className="my-3">Order # 4543f34f545</h1>
         <div className="shipping-info">
-          <h4 className="mb-3">Shipping Info</h4>
-          <p><b>Name:</b> John</p>
-          <p><b>Phone:</b> 111 111 1111</p>
-          <p className="mb-3"><b>Address:</b> Address of user</p>
-          <p><b>Amount:</b> $1111</p>
+          {userData ? (
+            <div className='shipping-info'>
+              <h4 className="mb-3">Shipping Info</h4>
+              <p><b>Name:</b> {userData.name}</p>
+              <p><b>Phone:</b> {userData.phone}</p>
+              <p><b>Email:</b> {userData.email}</p>
+              <p className="mb-3"><b>Address:</b> {userData.address}</p>
+            </div>
+          ) : (
+            <p>Loading user data...</p>
+          )}
         </div>
 
         <hr />
@@ -52,19 +86,17 @@ function OrderDetails() {
 
         <h4 className="my-3">Order Items:</h4>
 
-        {/* {orderItems.map((item) => ( */}
-          <div key={product.id} className="cart-item my-1">
-            <div className="row my-3">
-              <div className="col-4 col-lg-2">
-                <img src={product.image}  height="60" width="60" />
-              </div>
-
-              <div className="col-8 col-lg-10">
-                <p>{product.title}</p>
-                <p>${product.price}</p>
-              </div>
+        <div key={product.title} className="cart-item my-1">
+          <div className="row my-3">
+            <div className="col-4 col-lg-2">
+              <img src={product.image} height="60" width="60" />
+            </div>
+            <div className="col-8 col-lg-10">
+              <p>{product.title}</p>
+              <p>${product.price}</p>
             </div>
           </div>
+        </div>
         {/*)) } */}
 
         <hr />
@@ -72,12 +104,11 @@ function OrderDetails() {
         <h4 className="my-3 delivery-title">Delivery Date:</h4>
         <p className="delivery-date">{`${sixDaysLater.getDate()}-${sixDaysLater.getMonth() + 1}-${sixDaysLater.getFullYear()}`}</p>
       </div>
-      < div className="order--btnContainer">
-      <button className='order--btn' onClick={handleOrderClick}>Done</button>
+      <div className="order--btnContainer">
+        <button className='order--btn' onClick={handleOrderClick}>Done</button>
       </div>
     </div>
   );
 }
 
 export default OrderDetails;
-

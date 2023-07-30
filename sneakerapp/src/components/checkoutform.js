@@ -1,29 +1,48 @@
 import React, { useState } from "react";
 import visamatercard from "../images/visa_mastercard.png";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Checkoutform(props) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    address: "",
-    contact: "",
-    cardNumber: "",
-    MM: "",
-    YY: "",
-    CVV: ""
-  });
   const navigate = useNavigate();
+  const [cardholdername, setCardHolderName] = useState("");
+  const [cardnumber, setCardnumber] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [CVV, setCVV] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  const handleCardHolderNameChange = (e) => {
+    setCardHolderName(e.target.value);
+  }
+  const handlecardnumberChange = (e) => {
+    setCardnumber(e.target.value);
+  };
+
+  const handlemonthChange = (e) => {
+    setMonth(e.target.value);
+  };
+
+  const handleyearChange = (e) => {
+    setYear(e.target.value);
+  };
+
+  const handleCVVChange = (e) => {
+    setCVV(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (cardnumber === "" || month === "" || year === "" || CVV === "" || cardholdername === "") {
+        setErrorMessage("Please fill in all the fields.");
+        return;
+    }
+  }
+  const {title} = useParams();
   const handleOrderDetails = () => {
-    navigate("/OrderDetails");
+    navigate(`/OrderDetails/${title}`);
   }
 
-  const handleChange = (event) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [event.target.name]: event.target.value
-    }));
-  };
   const handleCloseClick=()=>{
     navigate('/App1')
   }
@@ -33,52 +52,8 @@ export default function Checkoutform(props) {
         <button className="checkoutform--close" onClick={()=>handleCloseClick()}>
           X
         </button>
-        <form>
-          {/*<h2 className="checkoutform--title">Personal Information</h2>
-           <div className="form-group">
-            <label htmlFor="fullName">Name Surname</label>
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Full Name"
-              onChange={handleChange}
-              name="fullName"
-              value={formData.fullName}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              placeholder="Email"
-              onChange={handleChange}
-              name="email"
-              value={formData.email}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="contact">Contact</label>
-            <input
-              type="text"
-              id="contact"
-              placeholder="Contact"
-              onChange={handleChange}
-              name="contact"
-              value={formData.contact}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              id="address"
-              placeholder="Address"
-              onChange={handleChange}
-              name="address"
-              value={formData.address}
-            />
-          </div> */}
+        <form onSubmit={handleSubmit}>
+          <div>
           <h2 className="checkoutform--title">Card Information</h2>
           <div className="card-details">
             <img
@@ -87,54 +62,64 @@ export default function Checkoutform(props) {
               alt="Visa/Mastercard"
             />
             <div className="form-group">
-              <label htmlFor="cardNumber">Card Number</label>
+              <label htmlFor="cardNumber">Card Holder's Name</label>
               <input
                 type="text"
-                id="cardNumber"
-                placeholder="Card Number"
-                onChange={handleChange}
-                name="cardNumber"
-                value={formData.cardNumber}
+                id="cardholdername"
+                placeholder="Enter the Card Holder's Name"
+                value={cardholdername}
+                onChange={handleCardHolderNameChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="cardNumber">Card Number</label>
+              <input
+                type="number"
+                id="cardnumber"
+                placeholder="Enter your Card Number"
+                value={cardnumber}
+                onChange={handlecardnumberChange}
               />
             </div>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="MM">MM</label>
                 <input
-                  type="text"
-                  id="MM"
-                  placeholder="MM"
-                  onChange={handleChange}
-                  name="MM"
-                  value={formData.MM}
+                  type="number"
+                  id="month"
+                  placeholder="Enter expiry month"
+                  value={month}
+                  onChange={handlemonthChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="YY">YY</label>
                 <input
-                  type="text"
-                  id="YY"
-                  placeholder="YY"
-                  onChange={handleChange}
-                  name="YY"
-                  value={formData.YY}
+                  type="number"
+                  id="year"
+                  placeholder="Enter expiry year"
+                  value={year}
+                  onChange={handleyearChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="CVV">CVV</label>
                 <input
-                  type="text"
+                  type="password"
                   id="CVV"
-                  placeholder="CVV"
-                  onChange={handleChange}
-                  name="CVV"
-                  value={formData.CVV}
+                  placeholder="Enter the CVV"
+                  value={CVV}
+                  onChange={handleCVVChange}
                 />
               </div>
             </div>
           </div>
           <br />
-          <button className="checkoutform--onsubmit" onClick={handleOrderDetails}>Checkout</button>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <div>
+            <button className="checkoutform--onsubmit" onClick={handleOrderDetails}>Checkout</button>
+          </div>
+          </div>
         </form>
       </div>
     </div>

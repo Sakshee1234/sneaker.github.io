@@ -7,6 +7,8 @@ Accountb.use(cors({origin: ["http://localhost:3000"]}));
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
+// add your JWT_SECRET
+// add your mongoUrl
 
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,

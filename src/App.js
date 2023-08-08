@@ -25,7 +25,7 @@ import OrderDetailsCart from './components/OrderDetailsCart';
 import Paymentupi from './components/Paymentupi';
 import PaymentOptionCart from './components/PaymentOptionCart';
 import PaymentUpiCart from './components/PaymentUpiCart';
-// import CheckoutformCart from './components/checkoutformCart';
+import CheckoutformCart from './components/checkoutformCart';
 import ConfirmOrderDetailsPage from './components/ConfirmOrderDetailsPage';
 import ThankYou from './components/ThankYou';
 

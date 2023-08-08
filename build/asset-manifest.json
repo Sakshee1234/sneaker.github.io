@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b83df097.css",
+    "main.js": "/static/js/main.c2a8810e.js",
+    "static/js/787.5ac326e4.chunk.js": "/static/js/787.5ac326e4.chunk.js",
+    "static/media/b2.jpg": "/static/media/b2.5d59b9831a7c416d09a5.jpg",
+    "static/media/img.png": "/static/media/img.7cb7b47c9a03dee554a2.png",
+    "static/media/carousel3.png": "/static/media/carousel3.c452f1e7379de8c86c18.png",
+    "static/media/carousel7.png": "/static/media/carousel7.65a73484bb26347936ce.png",
+    "static/media/JORDON5.jpeg": "/static/media/JORDON5.1bf2d20988d80e84e3ef.jpeg",
+    "static/media/JORDON1.jpg": "/static/media/JORDON1.769364dd90ef17ef9380.jpg",
+    "static/media/carousel4.png": "/static/media/carousel4.582e96a888cfe2ebfdc1.png",
+    "static/media/carousel6.png": "/static/media/carousel6.8d782e653c3af390badb.png",
+    "static/media/carousel2.png": "/static/media/carousel2.42784f71fa7fba4d3553.png",
+    "static/media/carousel5.png": "/static/media/carousel5.86cd3ea19efe5c3845b0.png",
+    "static/media/carousel1.png": "/static/media/carousel1.a5ecb9a679aba5bb06ed.png",
+    "static/media/visa_mastercard.png": "/static/media/visa_mastercard.7355d71f2fb844d62e99.png",
+    "index.html": "/index.html",
+    "main.b83df097.css.map": "/static/css/main.b83df097.css.map",
+    "main.c2a8810e.js.map": "/static/js/main.c2a8810e.js.map",
+    "787.5ac326e4.chunk.js.map": "/static/js/787.5ac326e4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b83df097.css",
+    "static/js/main.c2a8810e.js"
+  ]
+}

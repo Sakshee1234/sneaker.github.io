@@ -21,7 +21,7 @@ export default function Cart(props) {
       <div className="cart--border">
       <div className="cart">
         <h1 className="cart--title">Cart</h1>  
-        {props.cart ? props.cart.map((data) => (
+        {props.cart.length>0 ? props.cart.map((data) => (
           <span key={data.id}>
             <div className='cart--items'>
                 <div className="cart--image">

@@ -542,7 +542,10 @@ p {
 .wishlist button:hover{
   transform:scale(1.05);
 }
-
+.wishlist--empty{
+  display:flex;
+  justify-content: center;
+}
 /* card */
 .card{
   width:200px;

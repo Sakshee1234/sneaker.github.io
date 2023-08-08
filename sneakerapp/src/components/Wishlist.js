@@ -42,7 +42,7 @@ export default function Wishlist(props){
           <div className="wishlist">
             <h1 className="wishlist--titlesymbol">❤️</h1>
             <h1 className="wishlist--title">My Wishlist </h1> 
-            {wishlist.map((data) => (
+            {wishlist.length>0 ? wishlist.map((data) => (
               <span key={data.id}>
                 <div className='wishlist--items'>
                     <div className="wishlist--image">
@@ -59,7 +59,10 @@ export default function Wishlist(props){
                     </div>
                 </div>
               </span>
-            ))}
+            )):
+            <div className="wishlist--empty">
+                <h2>Your wishlist is empty</h2>
+            </div>}
             </div>
           </div>
           <Footer/>
